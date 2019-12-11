@@ -1,0 +1,17 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "clang++ build active file",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++14",
+                "-g",
+                "${workspaceFolder}/algorithm_introduction/ss2/insertion_sort.cpp",
+                "-o",
+                "${workspaceFolder}/algorithm_introduction/ss2/build/insertion_sort.out",
+            ],
+        }
+    ],
+    "version": "2.0.0"
+}
