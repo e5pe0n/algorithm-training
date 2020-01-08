@@ -153,3 +153,5 @@ dmypy.json
 .history
 
 # End of https://www.gitignore.io/api/c++,python,visualstudiocode
+
+!algorithm_introduction/template/cpp/build
