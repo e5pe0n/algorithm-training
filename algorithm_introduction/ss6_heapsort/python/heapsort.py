@@ -2,7 +2,7 @@ from array import array
 
 
 def parent(i):
-    return (i + 1) >> 1
+    return (i - 1) >> 1
 
 
 def left(i):

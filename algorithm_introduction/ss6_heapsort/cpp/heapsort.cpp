@@ -9,7 +9,7 @@ struct Arr {
   int size;
 };
 
-int parent(int i) { return (i + 1) >> 1; }
+int parent(int i) { return (i - 1) >> 1; }
 
 int left(int i) { return ((i + 1) << 1) - 1; }
 
@@ -32,7 +32,7 @@ void max_heapify(int A[], int last_heap_idx, int i) {
 }
 
 void build_max_heap(int A[], int arr_size) {
-  int heap_size = arr_size - 1;
+  int heap_size = arr_size;
   for (int i = (heap_size >> 1) - 1; i >= 0; --i) {
     max_heapify(A, heap_size - 1, i);
   }
@@ -50,7 +50,7 @@ int main() {
   int A[] = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
   int B[] = {4, 1, 3, 2, 16, 9, 10, 14, 8};
   Arr arr_A{A, sizeof(A) / sizeof(A[0])};
-  Arr arr_B{B, sizeof(B) / sizeof(A[0])};
+  Arr arr_B{B, sizeof(B) / sizeof(B[0])};
   unordered_map<string, Arr> cases{{"A", arr_A}, {"B", arr_B}};
 
   for (auto &p : cases) {
