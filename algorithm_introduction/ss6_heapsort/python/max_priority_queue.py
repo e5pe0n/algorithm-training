@@ -11,13 +11,13 @@ class MaxPriorityQueue(UserList):
     def __str__(self) -> str:
         return str(self.data[:self.last_heap_idx + 1])
 
-    def _parent(self, i: int):
+    def _parent(self, i: int) -> int:
         return (i - 1) >> 1
 
-    def _left(self, i: int):
+    def _left(self, i: int) -> int:
         return ((i + 1) << 1) - 1
 
-    def _right(self, i: int):
+    def _right(self, i: int) -> int:
         return (i + 1) << 1
 
     def _max_heapify(self, i: int):
@@ -33,13 +33,13 @@ class MaxPriorityQueue(UserList):
             self._max_heapify(largest)
 
     def _build_max_heap(self):
-        for i in range((len(self) >> 1) - 1, -1, -1):
+        for i in range(self._parent(self.last_heap_idx), -1, -1):
             self._max_heapify(i)
 
-    def heap_maximum(self):
+    def heap_maximum(self) -> int:
         return self[0]
 
-    def heap_extract_max(self):
+    def heap_extract_max(self) -> int:
         if self.last_heap_idx < 0:
             raise ValueError('Heap underflow')
         max_val = self[0]
