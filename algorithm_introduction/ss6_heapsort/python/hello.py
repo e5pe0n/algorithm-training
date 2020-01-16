@@ -1,11 +1,13 @@
-from array import array
+from collections import UserList
+from typing import List
 
 
-def main(A):
-    A[0], A[1] = A[1], A[0]
+class MaxPriorityQueue(UserList):
+    def __init__(self, initializer: List[int]):
+        self.data = initializer
+        self.last_heap_idx = len(initializer) - 1
 
 
-if __name__ == '__main__':
-    A = array('I', [1, 2, 3])
-    main(A)
-    print(A)
+A = MaxPriorityQueue([0, 1, 2])
+print(A)
+A[0] = 100
