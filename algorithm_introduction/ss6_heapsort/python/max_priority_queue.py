@@ -1,3 +1,4 @@
+import sys
 from collections import UserList
 from typing import List
 
@@ -58,7 +59,7 @@ class MaxPriorityQueue(UserList):
 
     def max_heap_insert(self, key: int):
         self.last_heap_idx += 1
-        self.append(-float('inf'))
+        self.append(-sys.maxsize() - 1)
         self._heap_increase_key(self.last_heap_idx, key)
 
 
