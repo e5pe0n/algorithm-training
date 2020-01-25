@@ -28,7 +28,7 @@
             "name": "CodeLLDB",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/algorithm_introduction/ss2/build/insertion_sort.out",
+            "program": "${workspaceFolder}/algorithm_introduction/ss8_sorting_in_linear_time/cpp/build/radix_sort_a.out",
             "args": [],
             "preLaunchTask": "clang++ build active file"
         }
