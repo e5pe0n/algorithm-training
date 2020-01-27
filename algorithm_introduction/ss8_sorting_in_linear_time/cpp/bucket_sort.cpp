@@ -33,6 +33,9 @@ void insertion_sort(float *A, int size) {
 
 void bucket_sort(float *A, int size) {
   for (int i = 0; i < size; ++i) {
+    counter[i] = 0;
+  }
+  for (int i = 0; i < size; ++i) {
     int idx = int(size * A[i]);
     B[idx][counter[idx]] = A[i];
     ++counter[idx];
