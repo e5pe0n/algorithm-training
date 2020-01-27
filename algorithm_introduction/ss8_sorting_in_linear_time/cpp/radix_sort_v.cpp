@@ -69,7 +69,7 @@ int main() {
   vector<int> Y{3297, 4576, 6575, 8394, 4363, 7202, 3551};
 
   Arr arr_X{X, 9, 3};
-  Arr arr_Y{Y, 9, 3};
+  Arr arr_Y{Y, 9, 4};
 
   unordered_map<string, Arr *> cases = {{"X", &arr_X}, {"Y", &arr_Y}};
   for (auto &p : cases) {
