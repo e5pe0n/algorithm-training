@@ -4,8 +4,6 @@
 
 using namespace std;
 
-// int work_a[800]; // e.g.1 array size = 100, d = 8 / e.g.2 array size = 200, d = 4
-// int work_b[800];
 int work_a[100][8];
 int work_b[100][8];
 int C[100];
@@ -32,16 +30,13 @@ void counting_sort(int size_a, int k, int idx) {
     C[i] = 0;
   }
   for (int i = 0; i < size_a; ++i) {
-    // C[work_a[i * d + idx]] += 1;
     C[work_a[i][idx]] += 1;
   }
   for (int i = 0; i < k; ++i) {
     C[i + 1] += C[i];
   }
   for (int i = size_a - 1; i >= 0; --i) {
-    // work_b[C[work_a[i * d + idx]]] = work_a p_b[C[work_a[i][idx]] - 1] = &p_a[i];
     int t = work_a[i][idx];
-    // swap(work_b[C[work_a[i][idx]] - 1], work_a[i]);
     swap(work_b[C[t] - 1], work_a[i]);
     --C[t];
   }
