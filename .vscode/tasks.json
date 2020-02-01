@@ -7,9 +7,9 @@
             "args": [
                 "-std=c++14",
                 "-g",
-                "${workspaceFolder}/algorithm_introduction/ss8_sorting_in_linear_time/cpp/radix_sort_vs.cpp",
+                "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/randomized_select.cpp",
                 "-o",
-                "${workspaceFolder}/algorithm_introduction/ss8_sorting_in_linear_time/cpp/build/radix_sort_vs.out",
+                "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/build/randomized_select.out",
             ],
         }
     ],

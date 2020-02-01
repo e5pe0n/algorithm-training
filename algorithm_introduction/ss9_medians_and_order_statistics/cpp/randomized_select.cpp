@@ -14,7 +14,7 @@ struct Arr {
   string arr_str() {
     string s = "[";
     for (int i = 0; i < size; ++i) {
-      s += to_string(i);
+      s += to_string(arr[i]);
       s += ", ";
     }
     s += "]";
@@ -46,7 +46,16 @@ int randomized_select(int *A, int p, int r, int i) {
   if (p == r)
     return A[p];
   int q = randomized_partition(A, p, r);
-  if (i == q)
+  // This line is redundant but it is true on semantic: recursion
+  // because i should express i-th least between p and r.
+  int k = q - p + 1;
+  if (i == k) {
+    return A[q];
+  } else if (i < k) {
+    return randomized_select(A, p, q - 1, i);
+  } else {
+    return randomized_select(A, q + 1, r, i - k);
+  }
 }
 
 int main() {
@@ -58,9 +67,8 @@ int main() {
 
   unordered_map<string, Arr *> cases{{"X", &arr_X}, {"Y", &arr_Y}};
   for (auto &p : cases) {
-    cout << "# " << p.first << "\n";
-    cout << "before: " << p.second->arr_str() << "\n";
-    randomized_select(p.second->arr);
-    cout << "after: " << p.second->arr_str() << "\n";
+    cout << "# " << p.first << ": " << p.second->arr_str() << "\n";
+    int i = randomized_select(p.second->arr, 0, p.second->size - 1, 9);
+    cout << "answer: " << to_string(i) << "\n" << endl;
   }
 }
