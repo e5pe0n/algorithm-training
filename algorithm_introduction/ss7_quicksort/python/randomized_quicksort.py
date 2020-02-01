@@ -14,7 +14,7 @@ def partition(A: array, p: int, r: int):
 
 
 def randomized_partition(A: array, p: int, r: int):
-    i = int(random.uniform(p, r + 1))
+    i = int(random.uniform(p, r))
     A[i], A[r] = A[r], A[i]
     return partition(A, p, r)
 
