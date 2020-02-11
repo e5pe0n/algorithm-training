@@ -7,9 +7,9 @@
             "args": [
                 "-std=c++14",
                 "-g",
-                "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/randomized_select.cpp",
+                "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/select.cpp",
                 "-o",
-                "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/build/randomized_select.out",
+                "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/build/select.out",
             ],
         }
     ],
