@@ -11,6 +11,8 @@ class _Stack():
         return self._top < 0
 
     def _push(self, x):
+        if self._top + 1 == self._capacity:
+            raise ValueError('Overflow')
         self._top += 1
         self._arr[self._top] = x
 
@@ -29,8 +31,21 @@ def main():
     S._push(2)
     print(f'S._arr: {S._arr}')
     print(f'S._stack_empty(): {S._stack_empty()}')
-    print(f'S.pop(): {S._pop()}')
+    print(f'S._pop(): {S._pop()}')
     print(f'S._arr: {S._arr}')
+    S._push(3)
+    S._push(4)
+    try:
+        S._push(5)
+    except ValueError as err:
+        print(err)
+    print(f'S._pop(): {S._pop()}')
+    print(f'S._pop(): {S._pop()}')
+    print(f'S._pop(): {S._pop()}')
+    try:
+        print(f'S._pop(): {S._pop()}')
+    except ValueError as err:
+        print(err)
 
 
 if __name__ == '__main__':

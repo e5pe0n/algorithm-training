@@ -11,7 +11,12 @@ struct _Stack {
   _Stack(int capacity) : _capacity(capacity) { _arr = new int[capacity]{}; }
 
   bool _stack_empty() { return _top < 0; }
-  void _push(int x) { _arr[++_top] = x; }
+  bool _stack_full() { return _top + 1 == _capacity; }
+  void _push(int x) {
+    if (_stack_full())
+      throw "Overflow";
+    _arr[++_top] = x;
+  }
   int _pop() {
     if (_stack_empty())
       throw "Underflow";
@@ -24,7 +29,7 @@ struct _Stack {
       s += to_string(_arr[i]);
       s += ", ";
     }
-    s += "]\n";
+    s += "]";
     return s;
   }
 
@@ -32,7 +37,7 @@ struct _Stack {
 };
 
 int main() {
-  _Stack S(10);
+  _Stack S(3);
 
   cout << "S._stack_empty(): " << to_string(S._stack_empty()) << "\n";
   S._push(1);
@@ -41,4 +46,19 @@ int main() {
   cout << "S._stack_empty(): " << to_string(S._stack_empty()) << "\n";
   cout << "S.pop(): " << to_string(S._pop()) << "\n";
   cout << "S: " << S._arr_str() << "\n";
+  S._push(3);
+  S._push(4);
+  try {
+    S._push(5);
+  } catch (char const *e) {
+    cout << e << "\n";
+  }
+  cout << "S.pop(): " << to_string(S._pop()) << "\n";
+  cout << "S.pop(): " << to_string(S._pop()) << "\n";
+  cout << "S.pop(): " << to_string(S._pop()) << "\n";
+  try {
+    cout << "S.pop(): " << to_string(S._pop()) << "\n";
+  } catch (char const *e) {
+    cout << e << "\n";
+  }
 }
