@@ -89,6 +89,7 @@ struct _List {
     _El *x = list_search(k);
     if (x != nullptr) {
       _list_delete(x);
+      delete x;
     }
   }
 };
