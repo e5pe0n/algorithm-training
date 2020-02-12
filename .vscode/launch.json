@@ -28,7 +28,7 @@
             "name": "CodeLLDB",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/algorithm_introduction/ss9_medians_and_order_statistics/cpp/build/select.out",
+            "program": "${workspaceFolder}/algorithm_introduction/ss10_elementary_data_structures/cpp/build/doubly_linked_list.out",
             "args": [],
             "preLaunchTask": "clang++ build active file"
         }
