@@ -34,6 +34,12 @@ struct _List {
     }
   }
 
+  ~_List() {
+    while (head->nxt != nullptr) {
+      _list_delete(head->nxt);
+    }
+  }
+
   string _List_str() {
     string s = "[";
     _El *x = head;
