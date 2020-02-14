@@ -48,11 +48,11 @@ def array_delete(key: int):
 
     pos = array_search(key)
     if pos >= 0:
-        if prvs[pos] != -1:
+        if prvs[pos] >= 0:
             nxts[prvs[pos]] = nxts[pos]
         else:
             head = nxts[pos]
-        if nxts[pos] != -1:
+        if nxts[pos] >= 0:
             prvs[nxts[pos]] = prvs[pos]
         keys[pos] = -1
 
