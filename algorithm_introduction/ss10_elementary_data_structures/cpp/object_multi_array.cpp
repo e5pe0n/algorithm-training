@@ -121,7 +121,7 @@ int main() {
 
   cout << "array_search(10): " << to_string(array_search(10)) << "\n";
   cout << "array_search(12): " << to_string(array_search(12)) << "\n";
-  cout << "array_search(14): " << to_string(array_search(14)) << "\n";
+  cout << "array_search(14): " << to_string(array_search(14)) << "\n\n";
 
   array_insert(15);
   cout << array_str() << "\n" << endl;
