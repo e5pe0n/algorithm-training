@@ -51,7 +51,7 @@ string array_str() {
 
 int allocate_object() {
   if (fre == -1) {
-    throw "Lack of capacity";
+    throw "Out of memory";
   } else {
     int pos = fre;
     fre = nxts[pos];

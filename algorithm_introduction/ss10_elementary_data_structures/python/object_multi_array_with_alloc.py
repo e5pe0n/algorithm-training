@@ -38,7 +38,7 @@ def allocate_object() -> int:
     global free
 
     if free == -1:
-        raise ValueError('Lack of capacity')
+        raise ValueError('Out of memory')
     else:
         pos = free
         free = nxts[pos]
