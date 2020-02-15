@@ -26,4 +26,5 @@ int main() {
   cout << "extend_gcd(12, 13): " << res_str(extend_gcd(12, 13)) << "\n";
   cout << "extend_gcd(12, 6): " << res_str(extend_gcd(12, 6)) << "\n";
   cout << "extend_gcd(12, 18): " << res_str(extend_gcd(12, 18)) << "\n";
+  cout << "extend_gcd(14, 100): " << res_str(extend_gcd(14, 100)) << endl;
 }
