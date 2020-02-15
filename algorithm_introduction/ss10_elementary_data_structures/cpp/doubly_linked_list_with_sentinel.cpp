@@ -82,13 +82,13 @@ struct _List {
   void _list_delete(_El *x) {
     x->prv->nxt = x->nxt;
     x->nxt->prv = x->prv;
+    delete x;
   }
 
   void list_delete(int k) {
     _El *x = list_search(k);
     if (x != &nil) {
       _list_delete(x);
-      delete x;
     }
   }
 };

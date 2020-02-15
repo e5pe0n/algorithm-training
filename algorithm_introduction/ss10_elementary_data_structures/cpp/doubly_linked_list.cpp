@@ -89,13 +89,13 @@ struct _List {
     if (x->nxt != nullptr) {
       x->nxt->prv = x->prv;
     }
+    delete x;
   }
 
   void list_delete(int k) {
     _El *x = list_search(k);
     if (x != nullptr) {
       _list_delete(x);
-      delete x;
     }
   }
 };
