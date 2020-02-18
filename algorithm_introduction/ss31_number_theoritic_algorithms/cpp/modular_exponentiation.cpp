@@ -32,4 +32,7 @@ int main() {
 
   res = modular_exponentiation(3, 3, 7);
   cout << "res(3, 3, 7): " << to_string(res) << "\n";
+
+  res = modular_exponentiation(2, 1, 2);
+  cout << "res(2, 1, 2): " << to_string(res) << "\n";
 }
