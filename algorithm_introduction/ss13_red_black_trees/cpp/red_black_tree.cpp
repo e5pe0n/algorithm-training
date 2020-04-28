@@ -18,7 +18,7 @@ struct Tree {
   Node *root;
   Node *nil = nullptr;
 
-  Tree(Node *root) : root(root) {}
+  Tree(Node *root) : root(root) { root->p = nil; }
 
   Node *tree_minimum(Node *x) {
     while (x->left != nil)

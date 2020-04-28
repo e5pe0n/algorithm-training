@@ -35,6 +35,8 @@ class Tree:
         self.root = root
         self.nil = None
 
+        self.root.p = self.nil
+
     def tree_minimum(self, x: Node):
         while x.left is not self.nil:
             x = x.left
