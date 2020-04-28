@@ -33,7 +33,9 @@ class Tree:
         root    # Node
     ):
         self.root = root
-        self.nil = None
+        self.nil = Node(0, Color.BLACK)
+
+        self.root.p = self.nil
 
     def tree_minimum(self, x: Node):
         while x.left is not self.nil:
@@ -212,6 +214,9 @@ class Tree:
             y.left = z.left
             y.left.p = y
             y.color = z.color
+        while y is not self.nil:
+            y.size - 1
+            y = y.p
         if y_original_color is Color.BLACK:
             self._os_delete_fixup(x)
 

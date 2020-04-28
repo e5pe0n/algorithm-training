@@ -19,7 +19,7 @@ struct Tree {
   Node *root;
   Node nil = Node(0, nullptr, Color::BLACK);
 
-  Tree(Node *root) : root(root) {}
+  Tree(Node *root) : root(root) { root->p = &nil; }
 
   Node *tree_minimum(Node *x) {
     while (x->left != &nil)
@@ -224,6 +224,10 @@ struct Tree {
       y->left = z->left;
       y->left->p = y;
       y->color = z->color;
+    }
+    while (y != &nil) {
+      y->size--;
+      y = y->p;
     }
     if (y_original_color == Color::BLACK)
       _os_delete_fixup(x);
