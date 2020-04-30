@@ -17,17 +17,17 @@ q = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
 for i in range(len(q)):
     p[i] = q[i]
 
-for i in range(1, 5):
+for j in (2**i for i in range(2, 6)):
     r = [0] * 40
     start = time.perf_counter_ns()
-    res = memoized_cut_rod_aux(p, 2**i, r)
+    res = memoized_cut_rod_aux(p, j, r)
     end = time.perf_counter_ns()
     duration = end - start
-    print(f'n: {i}, res: {res}, duration: {duration}[ns]')
+    print(f'n: {j}, res: {res}, duration: {duration}[ns]')
 
 """
-n: 1, res: 5, duration: 6666[ns]
-n: 2, res: 10, duration: 9914[ns]
-n: 3, res: 22, duration: 24518[ns]
-n: 4, res: 47, duration: 82062[ns]
+n: 4, res: 10, duration: 11393[ns]
+n: 8, res: 22, duration: 25069[ns]
+n: 16, res: 47, duration: 81558[ns]
+n: 32, res: 95, duration: 307030[ns]
 """
