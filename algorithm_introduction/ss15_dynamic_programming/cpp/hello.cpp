@@ -2,9 +2,9 @@
 
 using namespace std;
 
+enum Color { RED, BLACK };
+
 int main() {
-  for (int i = 1; i < 10; i += i) {
-    printf("%d, ", i);
-    printf("\n");
-  }
+  bool b = Color::RED == 0;
+  printf("%d\n", b);
 }
