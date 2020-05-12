@@ -110,13 +110,78 @@ class Tree:
                     x.key[i] = x.key[i + 1]
                 return
             else:
-                y = x.c[idx] if idx >= 0 else None
-                z = x.c[idx + 1] if idx < x.n else None
-                if y is not None and y.n >= self.t:
+                if idx == x.n:
+                    idx -= 1
+                y = x.c[idx]
+                z = x.c[idx + 1]
+                if y.n >= self.t:
                     _k = y.key[y.n - 1]
                     x.key[idx] = _k
                     self.b_tree_delete(y, _k)
-                elif z is not None and z.n >= self.t:
-                    _k = z.key[0]
+                elif z.n >= self.t:
+                    _k = z.key[z.n - 1]
                     x.key[idx] = _k
                     self.b_tree_delete(z, _k)
+                else:
+                    y.key[y.n] = x.key[idx]
+                    for i in range(z.n):
+                        y.key[y.n + 1 + i] = z.key[i]
+                        y.c[y.n + 1 + i] = z.c[i]
+                    y.c[y.n + 1 + z.n] = z.c[z.n]
+                    y.n += 1 + z.n
+                    for i in range(idx, x.n - 1):
+                        x.key[i] = x.key[i + 1]
+                    for i in range(idx + 1, x.n):
+                        x.c[i] = x[i + 1]
+                    self.b_tree_delete(y, k)
+        else:
+            if x.c[idx].n <= self.t - 1:
+                if idx > 0 and x.c[idx - 1].n >= self.t:
+                    for j in range(x.c[idx].n - 1, 0, -1):
+                        x.c[idx].key[j + 1] = x.c[idx].key[j]
+                    x.c[idx].key[0] = x.key[idx]
+                    x.key[idx] = x.c[idx - 1].key[x.c[idx - 1].n - 1]
+                    for j in range(x.c[idx].n, 0, -1):
+                        x.c[idx].c[j + 1] = x.c[idx].c[j]
+                    x.c[idx].c[0] = x.c[idx - 1].c[x.c[idx - 1].n]
+                    x.c[idx - 1].n -= 1
+                    x.c[idx].n += 1
+                    self.b_tree_delete(x.c[idx], k)
+                elif idx < x.n and x.c[idx + 1].n >= self.t:
+                    x.c[idx].key[x.c[idx].n] = x.key[idx]
+                    x.key[idx] = x.c[idx + 1].key[0]
+                    for j in range(1, x.c[idx + 1].n):
+                        x.c[idx + 1].key[j - 1] = x.c[idx + 1].key[j]
+                    x.c[idx].c[x.c[idx].n + 1] = x.c[idx + 1].c[0]
+                    for j in range(x.c[idx + 1].n, 0):
+                        x.c[idx + 1].c[j - 1] = x.c[idx + 1].c[j]
+                    x.c[idx + 1].n -= 1
+                    x.c[idx].n -= 1
+                    self.b_tree_delete(x.c[idx], k)
+                else:
+                    if idx > 0:
+                        x.c[idx - 1].key[x.c[idx - 1].n] = x.key[idx - 1]
+                        for j in range(x.c[idx].n):
+                            x.c[idx - 1].key[x.c[idx - 1].n + 1 + j] = x.c[idx].key[j]
+                            x.c[idx - 1].c[x.c[idx - 1].n + 1 + j] = x.c[idx].c[j]
+                        x.c[idx - 1].c[x.c[idx - 1].n + 1 + x.c[idx].n] = x.c[idx].c[x.c[idx].n]
+                        x.c[idx - 1].n += 1 + x.c[idx].n
+                        for j in range(idx - 1, x.n - 1):
+                            x.key[j] = x.key[j + 1]
+                            x.c[j] = x.c[j + 1]
+                        x.c[x.n - 1] = x.c[x.n]
+                        x.n -= 1
+                        self.b_tree_delete(x.c[idx - 1], k)
+                    else:
+                        x.c[idx].key[x.c[idx].n] = x.key[idx]
+                        for j in range(x.c[idx + 1].n):
+                            x.c[idx].key[x.c[idx].n + 1 + j] = x.c[idx + 1].key[j]
+                            x.c[idx].c[x.c[idx].n + 1 + j] = x.c[idx + 1].c[j]
+                        x.c[idx].c[x.c[idx].n + 1 + x.c[idx + 1].n] = x.c[idx + 1].c[x.c[idx + 1].n]
+                        x.c[idx].n += 1 + x.c[idx + 1].n
+                        for j in range(idx, x.n - 1):
+                            x.key[j] = x.key[j + 1]
+                            x.c[j] = x.c[j + 1]
+                        x.c[x.n - 1] = x.c[x.n]
+                        x.n -= 1
+                        self.b_tree_delete(x.c[idx], k)
