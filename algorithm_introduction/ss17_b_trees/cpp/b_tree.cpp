@@ -181,8 +181,8 @@ struct Tree {
             x->c[idx + 1]->key[j - 1] = x->c[idx + 1]->key[j];
           }
           x->c[idx]->c[x->c[idx]->n + 1] = x->c[idx + 1]->c[0];
-          for (int j = 1; j <= x->c[idx + 1]->n; --j) {
-            x->c[idx + 1]->c[j - 1] = x->c[idx + 1]->c[j - 1];
+          for (int j = x->c[idx + 1]->n; j > 0; --j) {
+            x->c[idx + 1]->c[j - 1] = x->c[idx + 1]->c[j];
           }
           --x->c[idx + 1]->n;
           ++x->c[idx]->n;
