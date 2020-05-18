@@ -11,17 +11,17 @@ struct vEBTree {
   int max = -1;
   int sqrt_u_upper = -1;
   int sqrt_u_lower = -1;
-  shared_ptr<vEB_Tree> summary = nullptr;
-  unique_ptr<shared_ptr<vEB_Tree>[]> cluster = nullptr;
-  vEB_Tree(int u) : u(u) {
+  shared_ptr<vEBTree> summary = nullptr;
+  unique_ptr<shared_ptr<vEBTree>[]> cluster = nullptr;
+  vEBTree(int u) : u(u) {
     sqrt_u_upper = int(ceil(sqrt(u)));
     sqrt_u_lower = int(sqrt(u));
     if (u == 2)
       return;
-    summary = make_shared<vEB_Tree>(sqrt_u_upper);
-    cluster = unique_ptr<shared_ptr<vEB_Tree>[]>(new shared_ptr<vEB_Tree>[sqrt_u_upper]);
+    summary = make_shared<vEBTree>(sqrt_u_upper);
+    cluster = unique_ptr<shared_ptr<vEBTree>[]>(new shared_ptr<vEBTree>[sqrt_u_upper]);
     for (int i = 0; i < sqrt_u_upper; ++i) {
-      cluster[i] = make_shared<vEB_Tree>(sqrt_u_lower);
+      cluster[i] = make_shared<vEBTree>(sqrt_u_lower);
     }
   }
 
