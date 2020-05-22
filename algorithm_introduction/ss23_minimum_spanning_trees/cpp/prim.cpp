@@ -12,7 +12,7 @@ struct Vertex {
   int n;
   int distance = I_MAX;
   vector<Vertex *> adj;
-  Vertex *pth = nullptr;
+  int pth;
   Vertex() {}
   Vertex(int n) : n(n) {}
   friend bool operator<(const Vertex &left, const Vertex &right) { return left.distance < right.distance; }
@@ -25,21 +25,21 @@ int weight[100][100];
 bool selected[100]{};
 
 void mst_prim(int N, Vertex V[], int weight[][100], bool selected[], int r) {
-  priority_queue<Vertex *, vector<Vertex *>, greater<vector<Vertex *>::value_type>> q;
+  priority_queue<Vertex, vector<Vertex>, greater<vector<Vertex>::value_type>> q;
   V[r].distance = 0;
-  q.push(&V[r]);
+  q.push(V[r]);
   while (!q.empty()) {
-    Vertex *u = q.top();
+    Vertex u = q.top();
     q.pop();
-    selected[u->n] = true;
-    for (int i = 0; i < u->adj.size(); ++i) {
-      Vertex *v = u->adj[i];
-      if (!selected[v->n] && weight[u->n][v->n] < v->distance) {
-        int less = min(u->n, v->n);
-        int greater = max(u->n, v->n);
+    selected[u.n] = true;
+    for (int i = 0; i < u.adj.size(); ++i) {
+      Vertex *v = u.adj[i];
+      if (!selected[v->n] && weight[u.n][v->n] < v->distance) {
+        int less = min(u.n, v->n);
+        int greater = max(u.n, v->n);
         v->distance = weight[less][greater];
-        v->pth = u;
-        q.push(v);
+        v->pth = u.n;
+        q.push(*v);
       }
     }
   }
@@ -86,7 +86,7 @@ int main() {
   printf("edges: ");
   for (int i = 1; i < N; ++i) {
     total_weight += V[i].distance;
-    printf("(%d, %d), ", V[i].pth->n, V[i].n);
+    printf("(%d, %d), ", V[i].pth, V[i].n);
   }
   printf("\n");
   printf("total weight: %d\n", total_weight);
