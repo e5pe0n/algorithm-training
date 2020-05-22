@@ -1,11 +1,38 @@
-#include <limits>
+#include <queue>
 #include <stdio.h>
+#include <vector>
 
 using namespace std;
 
-#define N 100
-#define M 1'000
+struct Vertex {
+  int n;
+  int dist;
+  friend bool operator<(const Vertex &lhs, const Vertex &rhs) { return lhs.dist < rhs.dist; }
+  friend bool operator>(const Vertex &lhs, const Vertex &rhs) { return lhs.dist > rhs.dist; }
+};
 
-const int I_MAX = numeric_limits<int>::max();
+int main() {
+  vector<Vertex> V{Vertex{0, 10}, Vertex{1, 5}, Vertex{2, 7}};
 
-int main() { printf("N: %d, M: %d, I_MAX: %d\n", N, M, I_MAX); }
+  // priority_queue<Vertex *, vector<Vertex *>, greater<vector<Vertex *>::value_type>> q;
+  // q.push(&V[0]);
+  // q.push(&V[1]);
+  // q.push(&V[2]);
+
+  // Vertex *v = q.top();
+  // printf("v->n: %d\n", v->n);
+
+  // v->dist = 0;
+  // q.push(v);
+
+  // v = q.top();
+  // printf("v->n: %d\n", v->n);
+
+  priority_queue<Vertex, vector<Vertex>, greater<vector<Vertex>::value_type>> q;
+  q.push(V[0]);
+  q.push(V[1]);
+  q.push(V[2]);
+
+  Vertex v = q.top();
+  printf("%d\n", v.n);
+}
