@@ -20,8 +20,8 @@ void BFS(vector<int> *V, int s) {
   d[s] = 0;
 
   while (!dq.empty()) {
-    int u = dq.back();
-    dq.pop_back();
+    int u = dq.front();
+    dq.pop_front();
     for (int i = 0; i < V[u].size(); ++i) {
       int v = V[u][i];
       if (d[v] >= I_MAX) {
