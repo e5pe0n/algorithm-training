@@ -21,40 +21,39 @@ struct Edge {
 
 vector<Edge> E[N]{};
 vector<Edge *> _E[N]{};
-set<pair<int, int>> E_s;
-Edge E_a[][N];
+Edge *E_m[][N];
 
-vector<Edge *> bfs(vector<Edge *> _E[], int s, int t) {
-  bool selected[N]{};
-  selected[0] = true;
-
-  list<int> q;
-  vector<Edge *> p;
-  q.push_back(s);
-  while (!q.empty()) {
-    int u = q.front();
-    q.pop_front();
-    if (u == t) {
-      break;
-    }
-    for (auto e : _E[u]) {
-      if (selected[e->v] < 0 && e->cf > 0) {
-        selected[e->v] = e->u;
-        q.push_back(e->v);
-        p.push_back(e);
-        break;
-      }
+void dfs_visit(vector<Edge *> _E[], int u, int t, int pth[]) {
+  if (pth[t] >= 0 || u == t) {
+    return;
+  }
+  for (auto e : _E[u]) {
+    if (pth[e->v] < 0 && e->cf > 0) {
+      pth[e->v] = u;
+      dfs_visit(_E, e->v, t, pth);
     }
   }
+}
 
-  if (selected[N - 1] < 0) {
+vector<Edge *> dfs(vector<Edge *> _E[], int s, int t) {
+  int pth[N];
+  memset(pth, -1, N);
+
+  dfs_visit(_E, s, t, pth);
+
+  if (pth[t] < 0) {
     // Augmenting path is not found
     return vector<Edge *>{};
   } else {
-    p;
+    vector<Edge *> p;
+    int cur = t;
+    while (cur != s) {
+      int pre = pth[cur];
+      p.push_back(_E[pre][cur]);
+      cur = pre;
+    }
+    return p;
   }
-
-  return p;
 }
 
 void ford_fulkerson(vector<Edge> E[], int s, int t) {
@@ -67,14 +66,14 @@ void ford_fulkerson(vector<Edge> E[], int s, int t) {
   for (int i = 0; i < N; ++i) {
     for (auto e : E[i]) {
       _E[i].push_back(&e);
-      E_s.emplace(make_pair(e.u, e.v));
+      E_m[i][e.v] = &e;
     }
     for (auto e : Ef[i]) {
       _E[i].push_back(&e);
     }
   }
   while (true) {
-    vector<Edge *> p = bfs(_E, s, t);
+    vector<Edge *> p = dfs(_E, s, t);
     if (p.empty()) {
       break;
     }
@@ -83,15 +82,10 @@ void ford_fulkerson(vector<Edge> E[], int s, int t) {
       cf = min(cf, e->cf);
     }
     for (auto e : p) {
-      if (E_s.find(make_pair(e->u, e->v)) != E_s.end()) {
+      if (E_m[e->u][e->v] != nullptr) {
         e->f += cf;
       } else {
-        for (auto ef : _E[e->v]) {
-          if (ef->u == e->v) {
-            ef->f -= cf;
-            break;
-          }
-        }
+        e->f -= cf;
       }
     }
   };
