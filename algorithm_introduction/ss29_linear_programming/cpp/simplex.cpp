@@ -98,9 +98,9 @@ float simplex(float A[][C], int B[], int N[]) {
   for (int k = 0; k < C - 1; ++k) {
     X[B[k]] = A[k][C - 1];
   }
-  for (int k = 0; k < R - 1; ++k) {
-    X[N[k]] = 0;
-  }
+  // for (int k = 0; k < R - 1; ++k) {
+  //   X[N[k]] = 0;
+  // }
   return v;
 }
 
