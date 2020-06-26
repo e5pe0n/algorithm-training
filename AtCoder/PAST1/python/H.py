@@ -10,11 +10,11 @@ def solve(V: List):
     cnt = 0
     for s in S:
         s = [int(s) for s in s.split()]
-        if int(s[0]) == 1:
+        if s[0] == 1:
             if C[s[1] - 1] - s[2] >= 0:
                 C[s[1] - 1] -= s[2]
                 cnt += s[2]
-        elif int(s[0]) == 2:
+        elif s[0] == 2:
             flg = True
             for i in range(0, N, 2):
                 if C[i] - s[1] < 0:
