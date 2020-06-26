@@ -1,7 +1,7 @@
 from typing import List, Tuple
 
 
-INF = 1_000_000_000
+INF = 1_000_000_000_000
 
 
 def dfs(R: List[Tuple[str, int]], N: int, M: int, selected: List[bool], cost: int, j: int) -> int:
