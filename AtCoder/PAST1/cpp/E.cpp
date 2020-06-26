@@ -56,3 +56,10 @@ int main() {
 
   solve(v0, v1);
 }
+
+// NYYNYY
+// NNYNNN
+// NNNYNN
+// NNNNNN
+// NNNNNY
+// YNNNYN

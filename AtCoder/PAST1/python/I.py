@@ -72,3 +72,12 @@ for k, v in cases.items():
     print(f'[{k}]')
     solve(v)
     print()
+
+# [case1]
+# 30
+
+# [case2]
+# -1
+
+# [case3]
+# 451747367

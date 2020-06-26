@@ -5,7 +5,9 @@
 #include <utility>
 #include <vector>
 
-#define INF 1'000'000'000
+#define INF 1'000'000'000'000
+
+typedef long long ll;
 
 using namespace std;
 
@@ -15,16 +17,16 @@ struct Input {
   vector<string> R;
 };
 
-int dfs(vector<pair<string, int>> &X, int N, int M, vector<bool> &selected, int cost, int j) {
+ll dfs(vector<pair<string, int>> &X, int N, int M, vector<bool> &selected, ll cost, int j) {
   if (j >= N) {
     return cost;
   }
 
-  int min_cost = INF;
+  ll min_cost = INF;
   for (int i = 0; i < M; ++i) {
     if (X[i].first[j] == 'Y') {
       vector<bool> _selected(selected);
-      int _cost = cost;
+      ll _cost = cost;
       if (!selected[i]) {
         _cost += X[i].second;
         _selected[i] = true;
@@ -42,11 +44,11 @@ void solve(int N, int M, vector<string> &R) {
     X.emplace_back(make_pair<string, int>(r.substr(0, N), stoi(r.substr(N + 1, r.size()))));
   }
   vector<bool> selected(M, false);
-  int cost = dfs(X, N, M, selected, 0, 0);
+  ll cost = dfs(X, N, M, selected, 0, 0);
   if (cost >= INF) {
     printf("-1\n");
   } else {
-    printf("%d\n", cost);
+    printf("%lld\n", cost);
   }
 }
 
@@ -78,3 +80,12 @@ int main() {
     printf("\n");
   }
 }
+
+// [case1]
+// 30
+
+// [case2]
+// -1
+
+// [case3]
+// 451747367

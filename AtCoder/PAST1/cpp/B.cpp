@@ -23,3 +23,13 @@ int main() {
   vector<int> v{10, 9, 10, 3, 100, 100, 90, 80, 10, 30, 10};
   solve(v);
 }
+
+// up 1
+// down 7
+// up 97
+// stay
+// down 10
+// down 10
+// down 70
+// up 20
+// down 20

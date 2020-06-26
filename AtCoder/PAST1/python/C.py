@@ -13,4 +13,15 @@ cases = {
 }
 
 for k, v in cases.items():
+    print(f'[{k}]')
     solve(v)
+    print()
+
+# [case1]
+# 18
+
+# [case2]
+# 98
+
+# [case3]
+# 35

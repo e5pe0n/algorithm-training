@@ -39,3 +39,9 @@ int main() {
     printf("\n");
   }
 }
+
+// [case1]
+// 6 4
+
+// [case2]
+// Correct

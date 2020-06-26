@@ -1,6 +1,3 @@
-from typing import List
-
-
 def solve(S: str):
     idxs = []
     for i in range(len(S)):
@@ -26,3 +23,9 @@ for k, v in cases.items():
     print(f'[{k}]')
     solve(v)
     print()
+
+# [case1]
+# AAAaAAbCACCaTDoGFisH
+
+# [case2]
+# AAAAAAAjhfgaBCsahdfakGGdEZsZ

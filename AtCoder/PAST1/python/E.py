@@ -41,3 +41,10 @@ v = [
 ]
 
 solve(v)
+
+# NYYNYY
+# NNYNNN
+# NNNYNN
+# NNNNNN
+# NNNNNY
+# YNNNYN

@@ -23,3 +23,12 @@ int main() {
     printf("\n");
   }
 }
+
+// [case1]
+// 1356
+
+// [case2]
+// error
+
+// [case3]
+// error

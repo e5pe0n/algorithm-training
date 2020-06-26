@@ -43,3 +43,9 @@ int main() {
     printf("\n");
   }
 }
+
+// [case1]
+// AAAaAAbCACCaTDoGFisH
+
+// [case2]
+// AAAAAAAjhfgaBCsahdfakGGdEZsZ

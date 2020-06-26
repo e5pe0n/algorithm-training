@@ -17,8 +17,17 @@ int main() {
                                  {"case3", vector<int>{19, 92, 3, 35, 78, 1}}};
 
   for (auto &[k, v] : cases) {
-    printf("%s\n", k.c_str());
+    printf("[%s]\n", k.c_str());
     solve(v);
     printf("\n");
   }
 }
+
+// [case1]
+// 18
+
+// [case2]
+// 98
+
+// [case3]
+// 35
