@@ -15,7 +15,6 @@ bool f(string s, int i, int N, int x, int y, int _x, int _y, int direction) {
     ++i;
   }
   if (i >= N) {
-    printf("(%d, %d), ", _x, _y);
     return _x == x && _y == y;
   } else {
     bool res0 = f(s, i + 1, N, x, y, _x, _y, (direction + 1) % 4);
