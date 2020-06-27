@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#define N 16'001
+#define N 16'000
 #define O 8'000
 
 using namespace std;

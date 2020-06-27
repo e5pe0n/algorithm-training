@@ -1,4 +1,4 @@
-MAX_SIZE = 16_001
+MAX_SIZE = 16_000
 OFFSET = 8_000
 
 X = [[False for _ in range(MAX_SIZE)] for _ in range(2)]
