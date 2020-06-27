@@ -35,13 +35,13 @@ int main() {
     while (i < M && s[i++] == 'F') {
       ++d;
     }
-    for (int k = 0; k < N; ++k) {
-      if ((k - d) >= 0 && (k + d) < N) {
-        X[j % 2][k] = X[(j - 1) % 2][k - d] || X[(j - 1) % 2][k + d];
+    for (int k = 0; k <= 2 * M; ++k) {
+      if ((k - d) >= 0 && (k + d) <= 2 * M) {
+        X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O - d] || X[(j - 1) % 2][k - M + O + d];
       } else if ((k - d) >= 0) {
-        X[j % 2][k] = X[(j - 1) % 2][k - d];
+        X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O - d];
       } else if ((k + d) < N) {
-        X[j % 2][k] = X[(j - 1) % 2][k + d];
+        X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O + d];
       }
     }
 
@@ -49,13 +49,13 @@ int main() {
     while (i < M && s[i++] == 'F') {
       ++d;
     }
-    for (int k = 0; k < N; ++k) {
+    for (int k = 0; k <= 2 * M; ++k) {
       if ((k - d) >= 0 && (k + d) < N) {
-        Y[j % 2][k] = Y[(j - 1) % 2][k - d] || Y[(j - 1) % 2][k + d];
+        Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O - d] || Y[(j - 1) % 2][k - M + O + d];
       } else if ((k - d) >= 0) {
-        Y[j % 2][k] = Y[(j - 1) % 2][k - d];
+        Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O - d];
       } else if ((k + d) < N) {
-        Y[j % 2][k] = Y[(j - 1) % 2][k + d];
+        Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O + d];
       }
     }
     ++j;
