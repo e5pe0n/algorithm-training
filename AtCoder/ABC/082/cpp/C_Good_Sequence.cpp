@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -12,7 +12,7 @@ int main() {
     cin >> A[i];
   }
 
-  map<int, int> M;
+  unordered_map<int, int> M;
   for (auto &a : A) {
     M[a] += 1;
   }
