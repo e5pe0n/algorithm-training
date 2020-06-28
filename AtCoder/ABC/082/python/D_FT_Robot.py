@@ -5,9 +5,8 @@ X = [[False for _ in range(MAX_SIZE)] for _ in range(2)]
 Y = [[False for _ in range(MAX_SIZE)] for _ in range(2)]
 
 s = input()
-x, y = input().split()
+x, y = [int(i) for i in input().split()]
 N = len(s)
-x, y = int(x), int(y)
 
 i = 0
 d = 0

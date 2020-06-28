@@ -5,9 +5,8 @@ S_MAX = 8_000
 M = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
 s = input()
-x, y = input().split()
+x, y = [int(i) for i in input().split()]
 N = len(s)
-x, y = int(x), int(y)
 
 
 def f(s, i, d, _x, _y):
