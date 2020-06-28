@@ -37,7 +37,7 @@ while i < N:
                                                       d] or X[(j - 1) % 2][k - N + OFFSET + d]
         elif k - d >= 0:
             X[j % 2][k - N + OFFSET] = X[(j - 1) % 2][k - N + OFFSET - d]
-        elif k + d < MAX_SIZE:
+        elif k + d <= 2 * N:
             X[j % 2][k - N + OFFSET] = X[(j - 1) % 2][k - N + OFFSET + d]
     i += 1
     d = 0
@@ -50,7 +50,7 @@ while i < N:
                                                       d] or Y[(j - 1) % 2][k - N + OFFSET + d]
         elif k - d >= 0:
             Y[j % 2][k] = Y[(j - 1) % 2][k - N + OFFSET - d]
-        elif k + d < MAX_SIZE:
+        elif k + d <= 2 * N:
             Y[j % 2][k] = Y[(j - 1) % 2][k - N + OFFSET + d]
     i += 1
     j += 1
