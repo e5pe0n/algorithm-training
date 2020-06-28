@@ -1,29 +1,62 @@
-# LTE
+MAX_SIZE = 16_001
+OFFSET = 8_000
 
-S_MAX = 8_000
-
-M = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+X = [[False for _ in range(MAX_SIZE)] for _ in range(2)]
+Y = [[False for _ in range(MAX_SIZE)] for _ in range(2)]
 
 s = input()
 x, y = input().split()
 N = len(s)
 x, y = int(x), int(y)
 
+i = 0
+d = 0
+j = 0
+while i < N and s[i] == 'F':
+    d += 1
+    i += 1
+X[j][d + OFFSET] = True
 
-def f(s, i, d, _x, _y):
+i += 1
+d = 0
+while i < N and s[i] == 'F':
+    d += 1
+    i += 1
+i += 1
+Y[j][d + OFFSET] = True
+Y[j][-d + OFFSET] = True
+
+j += 1
+while i < N:
+    d = 0
     while i < N and s[i] == 'F':
-        _x += M[d][0]
-        _y += M[d][1]
+        d += 1
         i += 1
-    if i >= N:
-        return _x == x and _y == y
-    else:
-        res0 = f(s, i + 1, (d + 1) % 4, _x, _y)
-        res1 = f(s, i + 1, (d + 3) % 4, _x, _y)
-        return res0 or res1
+    for k in range(2 * N + 1):
+        if k - d >= 0 and k + d <= 2 * N:
+            X[j % 2][k - N + OFFSET] = X[(j - 1) % 2][k - N + OFFSET -
+                                                      d] or X[(j - 1) % 2][k - N + OFFSET + d]
+        elif k - d >= 0:
+            X[j % 2][k - N + OFFSET] = X[(j - 1) % 2][k - N + OFFSET - d]
+        elif k + d < MAX_SIZE:
+            X[j % 2][k - N + OFFSET] = X[(j - 1) % 2][k - N + OFFSET + d]
+    i += 1
+    d = 0
+    while i < N and s[i] == 'F':
+        d += 1
+        i += 1
+    for k in range(2 * N + 1):
+        if k - d >= 0 and k + d <= 2 * N:
+            Y[j % 2][k - N + OFFSET] = Y[(j - 1) % 2][k - N + OFFSET -
+                                                      d] or Y[(j - 1) % 2][k - N + OFFSET + d]
+        elif k - d >= 0:
+            Y[j % 2][k] = Y[(j - 1) % 2][k - N + OFFSET - d]
+        elif k + d < MAX_SIZE:
+            Y[j % 2][k] = Y[(j - 1) % 2][k - N + OFFSET + d]
+    i += 1
+    j += 1
 
-
-if (f(s, 0, 0, 0, 0)):
+if (X[(j - 1) % 2][x + OFFSET] and Y[(j - 1) % 2][y + OFFSET]):
     print('Yes')
 else:
     print('No')

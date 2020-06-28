@@ -1,35 +1,67 @@
-// Answers are correct but TLE (Time Limit Exceeded)
-
 #include <iostream>
 #include <stdio.h>
-#include <string>
+
+#define N 16'001
+#define O 8'000
 
 using namespace std;
 
-int M[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-
-bool f(string s, int i, int N, int x, int y, int _x, int _y, int direction) {
-  while (i < N && s[i] == 'F') {
-    _x += M[direction][0];
-    _y += M[direction][1];
-    ++i;
-  }
-  if (i >= N) {
-    return _x == x && _y == y;
-  } else {
-    bool res0 = f(s, i + 1, N, x, y, _x, _y, (direction + 1) % 4);
-    bool res1 = f(s, i + 1, N, x, y, _x, _y, (direction + 3) % 4);
-    return res0 || res1;
-  }
-}
+bool X[2][N]{};
+bool Y[2][N]{};
 
 int main() {
   string s;
-  cin >> s;
   int x, y;
+  cin >> s;
   cin >> x >> y;
 
-  if (f(s, 0, s.size(), x, y, 0, 0, 0)) {
+  int i = 0;
+  int M = s.size();
+  int d = 0;
+  while (i < M && s[i++] == 'F') {
+    ++d;
+  }
+  X[0][d + O] = true;
+  d = 0;
+  while (i < M && s[i++] == 'F') {
+    ++d;
+  }
+  Y[0][d + O] = true;
+  Y[0][-d + O] = true;
+
+  int j = 1;
+  while (i < M) {
+    d = 0;
+    while (i < M && s[i++] == 'F') {
+      ++d;
+    }
+    for (int k = 0; k <= 2 * M; ++k) {
+      if ((k - d) >= 0 && (k + d) <= 2 * M) {
+        X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O - d] || X[(j - 1) % 2][k - M + O + d];
+      } else if ((k - d) >= 0) {
+        X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O - d];
+      } else if ((k + d) < N) {
+        X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O + d];
+      }
+    }
+
+    d = 0;
+    while (i < M && s[i++] == 'F') {
+      ++d;
+    }
+    for (int k = 0; k <= 2 * M; ++k) {
+      if ((k - d) >= 0 && (k + d) < N) {
+        Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O - d] || Y[(j - 1) % 2][k - M + O + d];
+      } else if ((k - d) >= 0) {
+        Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O - d];
+      } else if ((k + d) < N) {
+        Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O + d];
+      }
+    }
+    ++j;
+  }
+  bool res = X[(j - 1) % 2][x + O] && Y[(j - 1) % 2][y + O];
+  if (res) {
     printf("Yes\n");
   } else {
     printf("No\n");
