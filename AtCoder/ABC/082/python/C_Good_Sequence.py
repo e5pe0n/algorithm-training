@@ -1,11 +1,6 @@
+from collections import Counter
 N = int(input())
-A = input().split()
-A = [int(a) for a in A]
-
-D = {}
-
-for a in A:
-    D[a] = D.get(a, 0) + 1
+D = Counter([int(a) for a in input().split()])
 
 cnt = 0
 for k, v in D.items():
