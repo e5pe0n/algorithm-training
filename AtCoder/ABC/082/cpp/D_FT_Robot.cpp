@@ -40,7 +40,7 @@ int main() {
         X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O - d] || X[(j - 1) % 2][k - M + O + d];
       } else if ((k - d) >= 0) {
         X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O - d];
-      } else if ((k + d) < N) {
+      } else if ((k + d) <= 2 * M) {
         X[j % 2][k - M + O] = X[(j - 1) % 2][k - M + O + d];
       }
     }
@@ -54,7 +54,7 @@ int main() {
         Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O - d] || Y[(j - 1) % 2][k - M + O + d];
       } else if ((k - d) >= 0) {
         Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O - d];
-      } else if ((k + d) < N) {
+      } else if ((k + d) <= 2 * M) {
         Y[j % 2][k - M + O] = Y[(j - 1) % 2][k - M + O + d];
       }
     }
