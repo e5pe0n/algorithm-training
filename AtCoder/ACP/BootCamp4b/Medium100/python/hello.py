@@ -1,2 +1,4 @@
-print((0.5 ** 3 + 0.5 ** 2 + 0.5 ** 1 + 0.5 ** 1 + 99996) / 100000)
-print(f'{(11/8 + 99996) / 100000:.10f}')
+from collections import Counter
+
+C = Counter([1, 1, 2])
+print(C[3])
