@@ -5,5 +5,5 @@ using namespace std;
 
 int main() {
   string s = "abc";
-  printf("s.size(): %lu\n", s.size());
+  printf("%s\n", s.substr(-5, 5).c_str());
 }
