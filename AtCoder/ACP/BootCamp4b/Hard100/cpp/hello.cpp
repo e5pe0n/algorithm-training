@@ -1,23 +1,16 @@
-#include <set>
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 int main() {
-  string s = "123123123";
-  int N = s.size();
-  set<string> S;
-  for (int i = 0; i < N - 2; ++i) {
-    for (int j = i + 1; j < N - 1; ++j) {
-      for (int k = j + 1; k < N; ++k) {
-        S.insert(string(1, s[i]) + string(1, s[j]) + string(1, s[k]));
-      }
+  vector<int> V{0, 1, 10, 100};
+  string n_str = "000";
+  for (auto v : V) {
+    string i_str = to_string(v);
+    for (int i = 0; i < i_str.size(); ++i) {
+      i_str = n_str[i]
     }
   }
-  printf("%d\n", (int)S.size());
-  for (auto _s : S) {
-    printf("%s ", _s.c_str());
-  }
-  printf("\n");
 }
