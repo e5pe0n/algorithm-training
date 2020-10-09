@@ -5,4 +5,9 @@
 
 using namespace std;
 
-int main() { printf("%d\n", (int)ceil((double)9999 / 540) * 7550); }
+int main() {
+  int a = 7;
+  int b = 4;
+  int mod = 5;
+  printf("%d\n", (b - a) % mod);
+}
