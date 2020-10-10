@@ -1,13 +1,14 @@
-#include <math.h>
+#include <map>
 #include <stdio.h>
-#include <string>
 #include <vector>
 
 using namespace std;
 
 int main() {
-  int a = 7;
-  int b = 4;
-  int mod = 5;
-  printf("%d\n", (b - a) % mod);
+  map<vector<int>, int> M;
+  ++M[vector<int>{1, 2}];
+  ++M[vector<int>{1, 2}];
+  for (auto m : M) {
+    printf("%d\n", m.second);
+  }
 }
