@@ -1,1 +1,2 @@
-print(3 ** 9)
+
+print(sorted(list(map(int, input().split()))))
