@@ -4,9 +4,8 @@ if N == 0:
     print(0)
     exit()
 
-res = ""
+ans = ""
 while N != 0:
-    res = ("0" if N % 2 == 0 else "1") + res
+    ans = str(abs(N % 2)) + ans
     N = -1 * (N // 2)
-
-print(res)
+print(ans)
