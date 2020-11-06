@@ -1,3 +1,2 @@
-from math import radians
-
-print(radians(180))
+a, *b = [0, 1, 2]
+print(a, b)
