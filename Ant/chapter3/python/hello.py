@@ -1,3 +1,3 @@
-lst = [4, 4, 2, 0, 5, 5, 1]
+from math import radians
 
-print(set(lst))
+print(radians(180))
