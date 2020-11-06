@@ -17,10 +17,10 @@ def _sum(i):
     return s
 
 
-def _add(i, x):
+def _add(i, diff):
     global B
     while i <= N:
-        B[i] += x
+        B[i] += diff
         i += i & -i
 
 

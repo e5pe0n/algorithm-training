@@ -9,6 +9,7 @@ int N;
 int B[MAX_N + 1];
 
 int sum(int i) {
+  // return sum of vals in [0, i]
   int s = 0;
   while (i > 0) {
     s += B[i];
@@ -17,9 +18,9 @@ int sum(int i) {
   return s;
 }
 
-void add(int i, int x) {
+void add(int i, int diff) {
   while (i <= N) {
-    B[i] += x;
+    B[i] += diff;
     i += i & -i;
   }
 }

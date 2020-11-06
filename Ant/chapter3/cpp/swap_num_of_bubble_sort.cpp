@@ -17,9 +17,9 @@ int sum(int i) {
   return s;
 }
 
-void add(int i, int x) {
+void add(int i, int diff) {
   while (i <= N) {
-    B[i] += x;
+    B[i] += diff;
     i += i & -i;
   }
 }
