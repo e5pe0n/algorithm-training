@@ -49,7 +49,9 @@ int rec(int S, int v) {
 int main() {
   ifstream ifs("../testset/travelling_salesman_problem/test1.txt");
   ifs >> n >> m;
-  fill(&d[0][0], &d[0][0] + sizeof(d), INF);
+  for (int i = 0; i < n; ++i) {
+    fill(d[i], d[i] + n, INF);
+  }
   for (int i = 0; i < m; ++i) {
     int u, v, w;
     ifs >> u >> v >> w;
