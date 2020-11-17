@@ -6,21 +6,21 @@
 
 using namespace std;
 
-int n;
-int fct[] = {2, 3, 5};
+int n = 50;
+int F[] = {2, 3, 5};
 
 int main() {
-  cin >> n;
   auto start = chrono::high_resolution_clock::now();
   int res = 1;
   for (int i = 2; i <= n; ++i) {
     int t = i;
     for (int j = 0; j < 3; ++j) {
-      while (t % fct[j] == 0) {
-        t /= fct[j];
+      while (t % F[j] == 0) {
+        t /= F[j];
       }
     }
     if (t == 1) {
+      printf("%d\n", i);
       ++res;
     }
   }
