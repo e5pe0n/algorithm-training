@@ -10,8 +10,8 @@ with open("../testset/work_assignment/test2.txt", 'r') as f:
         u, v = map(int, ns(f).split())
         u -= 1
         v -= 1
-        G[u].append(v)
-        G[v].append(u)
+        G[u].append(N + v)
+        G[N + v].append(u)
 
 
 match = [-1] * V

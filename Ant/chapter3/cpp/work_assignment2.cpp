@@ -1,5 +1,4 @@
 #include <fstream>
-#include <memory.h>
 #include <stdio.h>
 #include <vector>
 
@@ -14,16 +13,11 @@ vector<int> G[MAX_V];
 int match[MAX_V];
 bool used[MAX_V];
 
-void add_edge(int u, int v) {
-  G[u].push_back(v);
-  G[v].push_back(u);
-}
-
 bool dfs(int u) {
   used[u] = true;
   for (auto v : G[u]) {
     int _u = match[v];
-    if (_u < 0 || !used[_u] && dfs(_u)) {
+    if (_u < 0 || (!used[_u] && dfs(_u))) {
       // u is computers, _u is computer which is already assigned to work v, v is work
       // increase num of matching only when w < 0 i.e. _u find a new work.
       match[u] = v;
@@ -40,14 +34,17 @@ int main() {
   for (int i = 0; i < K; ++i) {
     int u, v;
     ifs >> u >> v;
-    add_edge(u - 1, v - 1);
+    --u;
+    --v;
+    G[u].push_back(N + v);
+    G[N + v].push_back(u);
   }
 
   int res = 0;
-  memset(match, -1, sizeof(match));
-  for (int u = 0; u < N; ++u) {
+  fill(match, match + N + M, -1);
+  for (int u = 0; u < N; ++u) { // only left side vertexes
     if (match[u] < 0) {
-      memset(used, 0, sizeof(used));
+      fill(used, used + N + M, 0);
       if (dfs(u)) {
         ++res;
       }
