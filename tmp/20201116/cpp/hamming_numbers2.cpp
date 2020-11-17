@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#define MAX_H 10'000
+#define MAX_H 100'000
 
 using namespace std;
 typedef long long ll;
