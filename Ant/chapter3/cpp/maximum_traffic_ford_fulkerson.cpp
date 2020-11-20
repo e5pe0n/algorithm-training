@@ -36,6 +36,23 @@ int dfs(int u, int t, int f) {
   return 0;
 }
 
+int max_flow(int s, int t) {
+  int res = 0;
+  for (;;) {
+    memset(used, 0, sizeof(used));
+    int f = dfs(s, t, INF);
+    if (f == 0) {
+      return res;
+    }
+    res += f;
+  }
+}
+
+void solve(int s, int t) {
+  int res = max_flow(s, t);
+  printf("%d\n", res);
+}
+
 int main() {
   ifstream ifs("../testset/maximum_traffic/test1.txt");
   ifs >> n >> m >> s >> t;
@@ -44,16 +61,5 @@ int main() {
     ifs >> u >> v >> cap;
     G[u].push_back(Edge{v, cap, (int)G[v].size()});
     G[v].push_back(Edge{u, 0, (int)G[u].size() - 1});
-  }
-
-  int res = 0;
-  for (;;) {
-    memset(used, 0, sizeof(used));
-    int f = dfs(s, t, INF);
-    if (f == 0) {
-      printf("%d\n", res);
-      return 0;
-    }
-    res += f;
   }
 }

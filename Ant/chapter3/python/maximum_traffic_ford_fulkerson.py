@@ -35,11 +35,14 @@ def dfs(u, t, f, used):
     return 0
 
 
-res = 0
-while True:
-    used = [False] * n
-    f = dfs(s, t, INF, used)
-    if f == 0:
-        print(res)
-        exit()
-    res += f
+def max_flow(s, t):
+    res = 0
+    while True:
+        used = [False] * n
+        f = dfs(s, t, INF, used)
+        if f == 0:
+            return res
+        res += f
+
+
+print(max_flow(s, t))
