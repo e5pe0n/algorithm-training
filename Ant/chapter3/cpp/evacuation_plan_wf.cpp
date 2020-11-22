@@ -19,7 +19,7 @@ bool used[MAX_V];
 
 void solve() {
   V = N + M + 1;
-  for (int i = 0; i < N; ++i) {
+  for (int i = 0; i < V; ++i) {
     fill(g[i], g[i] + V, INF);
   }
   for (int j = 0; j < M; ++j) {
