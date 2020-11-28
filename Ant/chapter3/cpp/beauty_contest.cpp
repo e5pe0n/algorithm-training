@@ -1,3 +1,4 @@
+// Graham scan
 #include <algorithm>
 #include <fstream>
 #include <math.h>
