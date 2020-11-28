@@ -80,7 +80,7 @@ int main() {
   ifstream ifs("../testset/beauty_contest/test1.txt");
   ifs >> N;
   for (int i = 0; i < N; ++i) {
-    int x, y;
+    double x, y;
     ifs >> x >> y;
     ps[i] = P(x, y);
   }
