@@ -1,3 +1,4 @@
-lst = [[1, 2, 3], [1, 2, 3]]
-for i, (a, b, c) in enumerate(lst):
-    print(i, a, b, c)
+from bisect import bisect_left
+
+s = set([(20, 1), (30, 2), (40, 3)])
+print(bisect_left(s, (20, 1)))
