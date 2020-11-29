@@ -13,6 +13,11 @@ vector<int> G[MAX_V];
 int match[MAX_V];
 bool used[MAX_V];
 
+void add_edge(int u, int v) {
+  G[u].push_back(v);
+  G[v].push_back(u);
+}
+
 bool dfs(int u) {
   used[u] = true;
   for (auto v : G[u]) {
@@ -28,18 +33,7 @@ bool dfs(int u) {
   return false;
 }
 
-int main() {
-  ifstream ifs("../testset/work_assignment/test2.txt");
-  ifs >> N >> M >> K;
-  for (int i = 0; i < K; ++i) {
-    int u, v;
-    ifs >> u >> v;
-    --u;
-    --v;
-    G[u].push_back(N + v);
-    G[N + v].push_back(u);
-  }
-
+int bipartite_matching() {
   int res = 0;
   fill(match, match + N + M, -1);
   for (int u = 0; u < N; ++u) { // only left side vertexes
@@ -50,5 +44,21 @@ int main() {
       }
     }
   }
-  printf("%d\n", res);
+  return res;
+}
+
+void solve() { printf("%d\n", bipartite_matching()); }
+
+int main() {
+  ifstream ifs("../testset/work_assignment/test2.txt");
+  ifs >> N >> M >> K;
+  for (int i = 0; i < K; ++i) {
+    int u, v;
+    ifs >> u >> v;
+    --u;
+    --v;
+    add_edge(u, N + v);
+    add_edge(N + v, u);
+  }
+  solve();
 }
