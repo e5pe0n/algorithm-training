@@ -17,6 +17,11 @@ int n, m, s, t;
 vector<Edge> G[MAX_N];
 bool used[MAX_N];
 
+void add_edge(int u, int v, int cap) {
+  G[u].push_back(Edge{v, cap, G[v].size()});
+  G[v].push_back(Edge{u, 0, G[u].size() - 1});
+}
+
 int dfs(int u, int t, int f) {
   if (u == t) {
     return f;
@@ -48,7 +53,7 @@ int max_flow(int s, int t) {
   }
 }
 
-void solve(int s, int t) {
+void solve() {
   int res = max_flow(s, t);
   printf("%d\n", res);
 }
@@ -59,7 +64,7 @@ int main() {
   for (int i = 0; i < m; ++i) {
     int u, v, cap;
     ifs >> u >> v >> cap;
-    G[u].push_back(Edge{v, cap, (int)G[v].size()});
-    G[v].push_back(Edge{u, 0, (int)G[u].size() - 1});
+    add_edge(u, v, cap);
   }
+  solve();
 }

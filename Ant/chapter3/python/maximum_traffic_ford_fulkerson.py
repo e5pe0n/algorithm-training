@@ -15,10 +15,14 @@ class Edge:
 with open("../testset/maximum_traffic/test1.txt", 'r') as f:
     n, m, s, t = map(int, ns(f).split())
     G = [[] for _ in range(n)]
-    for _ in range(m):
-        u, v, cap = map(int, ns(f).split())
+
+    def add_edge(u, v, cap):
+        global G
         G[u].append(Edge(v, cap, len(G[v])))
-        G[v].append(Edge(u, cap, len(G[u]) - 1))
+        G[v].append(Edge(u, 0, len(G[u]) - 1))
+
+    for _ in range(m):
+        add_edge(*map(int, ns(f).split()))
 
 
 def dfs(u, t, f, used):
