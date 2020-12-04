@@ -2,6 +2,8 @@
 # Do not use PyPy3 if you use recursive function.
 from sys import setrecursionlimit
 setrecursionlimit(10**9)
+
+
 K = int(input())
 
 
@@ -28,7 +30,7 @@ def dfs(n, k):
     return res
 
 
-for k in range(1, 1000):
+for k in range(1, 10**9):
     if (res := dfs("", k)):
         print(res)
         exit()
