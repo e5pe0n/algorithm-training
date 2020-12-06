@@ -1,0 +1,5 @@
+N, A, B = map(int, input().split())
+p = N // (A + B)
+q = N % (A + B)
+res = p * A + min(q, A)
+print(res)
