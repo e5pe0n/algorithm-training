@@ -1,1 +1,1 @@
-# Implementing "Algorithm Introduction / 3rd Edition" with C++ and Python
+# Implementing "Algorithm Introduction / 3rd Edition" in C++ and Python
