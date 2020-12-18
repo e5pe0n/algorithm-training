@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
 int main() {
-  string T = "keyence";
-  printf("%s\n", T.substr(7).c_str());
+  ll a = 75558681;
+  printf("%lld\n", a ^ a);
 }
