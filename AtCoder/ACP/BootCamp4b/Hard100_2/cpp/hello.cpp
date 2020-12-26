@@ -3,9 +3,7 @@ using namespace std;
 typedef long long ll;
 
 ll f(ll n) {
-  if (n < 2) {
-    return 1;
-  }
+  if (n < 2) return 1;
   return n * f(n - 2);
 }
 
