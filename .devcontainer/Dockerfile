@@ -33,5 +33,3 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && pyenv install 3.8.5 \
     && pyenv global 3.8.5 \
     && pip install -r requirements.txt \
-    && git config --global user.name "1izard" \
-    && git config --global user.email "1izard.synchr0fi5h@gmail.com"
