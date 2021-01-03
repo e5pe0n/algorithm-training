@@ -30,6 +30,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
     && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc \
     && echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc \
-    && pyenv install 3.8.5 \
-    && pyenv global 3.8.5 \
+    && pyenv install 3.8.2 \
+    && pyenv global 3.8.2 \
     && pip install -r requirements.txt \
