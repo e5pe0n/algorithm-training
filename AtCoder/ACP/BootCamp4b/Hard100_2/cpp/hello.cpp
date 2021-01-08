@@ -2,13 +2,16 @@
 using namespace std;
 typedef long long ll;
 
-ll f(ll n) {
-  if (n < 2) return 1;
-  return n * f(n - 2);
+ll _pow(ll x, ll n) {
+  ll res = 1;
+  while (n > 0) {
+    if (n & 1) { res *= x; }
+    x *= x;
+    n >>= 1;
+  }
+  return res;
 }
 
 int main() {
-  for (int i = 0; i <= 1000; ++i) {
-    printf("(%d) %lld\n", i, f(i));
-  }
+  printf("%lld\n", _pow(3, 10));
 }
