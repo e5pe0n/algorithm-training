@@ -5,11 +5,10 @@ typedef long long ll;
 
 ll N;
 ll A[1 << MAX_N];
-ll n;
 
 void solve() {
-  ll left = max_element(A, A + n / 2) - A;
-  ll right = max_element(A + n / 2, A + n) - A;
+  ll left = max_element(A, A + N / 2) - A;
+  ll right = max_element(A + N / 2, A + N) - A;
   ll res = 0;
   if (A[left] > A[right]) {
     res = right;
@@ -21,8 +20,8 @@ void solve() {
 
 int main() {
   cin >> N;
-  n = 1 << N;
-  for (ll i = 0; i < n; ++i) {
+  N = 1 << N;
+  for (ll i = 0; i < N; ++i) {
     cin >> A[i];
   }
   solve();
