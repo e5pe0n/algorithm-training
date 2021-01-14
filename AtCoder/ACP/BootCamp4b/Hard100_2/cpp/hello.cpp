@@ -2,16 +2,14 @@
 using namespace std;
 typedef long long ll;
 
-ll _pow(ll x, ll n) {
-  ll res = 1;
-  while (n > 0) {
-    if (n & 1) { res *= x; }
-    x *= x;
-    n >>= 1;
-  }
-  return res;
-}
+ll N = 100'000;
 
 int main() {
-  printf("%lld\n", _pow(3, 10));
+  ll n = 9;
+  ll cnt = 0;
+  while (n < N) {
+    n *= 9;
+    ++cnt;
+  }
+  printf("%lld, %lld\n", cnt, n);
 }
