@@ -35,7 +35,7 @@ void init() {
 ll mod_com(ll n, ll k) {
   if (k == 0) { return 1; }
   if (k < 0 || k > n) { return 0; }
-  return ((P[n] * Q[n - k]) % MOD * Q[k]) % MOD;
+  return P[n] * Q[n - k] % MOD * Q[k] % MOD;
 }
 
 void solve() {

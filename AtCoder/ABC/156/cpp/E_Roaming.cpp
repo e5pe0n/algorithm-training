@@ -10,16 +10,16 @@ ll p[MAX_N + 1], q[MAX_N + 1];
 ll mod_pow(ll x, ll n) {
   ll res = 1;
   while (n > 0) {
-    if (n & 1) {
-      res = res * x % MOD;
-    }
+    if (n & 1) { res = res * x % MOD; }
     x = x * x % MOD;
     n >>= 1;
   }
   return res;
 }
 
-ll inv(ll x) { return mod_pow(x, MOD - 2); }
+ll inv(ll x) {
+  return mod_pow(x, MOD - 2);
+}
 
 void init() {
   p[0] = 1;
@@ -33,23 +33,25 @@ void init() {
 }
 
 ll comb(ll n, ll k) {
-  if (k == 0) {
-    return 1;
-  }
-  if (k < 0 || k > n) {
-    return 0;
-  }
+  if (k == 0) { return 1; }
+  if (k < 0 || k > n) { return 0; }
   return p[n] * q[n - k] % MOD * q[k] % MOD;
 }
 
 void solve() {
   init();
+  printf("4C2=%lld\n", comb(4, 2));
   ll res = 0;
   for (int i = 0; i <= min(K, N - 1); ++i) {
     res = (res + comb(N, i) * comb(N - 1, N - i - 1) % MOD) % MOD;
     if (res < 0) {
       printf("i=%d, res=%lld\n", i, res);
-      printf("comb(%lld, %d)=%lld, comb(%lld, %lld)=%lld\n", N, i, comb(N, i), N - 1, N - i - 1,
+      printf("comb(%lld, %d)=%lld, comb(%lld, %lld)=%lld\n",
+             N,
+             i,
+             comb(N, i),
+             N - 1,
+             N - i - 1,
              comb(N - 1, N - i - 1));
       break;
     }
