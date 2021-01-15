@@ -14,6 +14,6 @@ fi
 c=`which g++`
 if [ -x $c ] && [ ! -z $c ]
 then
-    g++ -std=c++14 -g -o ${current_dir}/build/${f}.out $1
+    g++ -std=c++17 -g -o ${current_dir}/build/${f}.out $1
     eval ${current_dir}/build/${f}.out
 fi

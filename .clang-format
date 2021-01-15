@@ -1,4 +1,4 @@
-ColumnLimit: 110
+ColumnLimit: 80
 AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: true

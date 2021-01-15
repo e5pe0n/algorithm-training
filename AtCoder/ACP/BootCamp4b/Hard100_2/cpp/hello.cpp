@@ -2,14 +2,10 @@
 using namespace std;
 typedef long long ll;
 
-ll N = 100'000;
-
 int main() {
-  ll n = 9;
-  ll cnt = 0;
-  while (n < N) {
-    n *= 9;
-    ++cnt;
+  ll res = 2;
+  for (ll i = 3; i <= 7; ++i) {
+    res ^= i;
   }
-  printf("%lld, %lld\n", cnt, n);
+  printf("%lld\n", res);
 }
