@@ -4,7 +4,7 @@
 using namespace std;
 typedef long long ll;
 
-ll N, K;
+ll N;
 ll P[MAX_N + 1], Q[MAX_N + 1];
 
 ll mod_pow(ll x, ll n) {
@@ -40,13 +40,12 @@ ll mod_com(ll n, ll k) {
 
 void solve() {
   init();
-  for (ll i = 1; i <= K; ++i) {
-    ll res = mod_com(N - K + 1, i) * mod_com(K - 1, i - 1) % MOD;
-    printf("%lld\n", res);
-  }
+  printf("6C2=%lld\n", mod_com(6, 2)); // 15
+  printf("6C0=%lld\n", mod_com(6, 0)); // 1
+  printf("6C8=%lld\n", mod_com(6, 8)); // 0
 }
 
 int main() {
-  cin >> N >> K;
+  cin >> N;
   solve();
 }
