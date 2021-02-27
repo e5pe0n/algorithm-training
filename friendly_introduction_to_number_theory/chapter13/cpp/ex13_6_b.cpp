@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define li2 1.04516378
+#define li2 1.04516378 // https://oeis.org/A069284
 using namespace std;
 typedef long long ll;
 typedef long double ld;
