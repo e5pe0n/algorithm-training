@@ -41,7 +41,6 @@ ll crt(vector<ll> C, vector<ll> M) {
     x = crt2(x, lcm, C[i], M[i]);
     if (x == -1) return -1;
     lcm = lcm * __gcd(lcm, M[i]) * M[i];
-    x = pos(x, lcm);
   }
   return x;
 }
