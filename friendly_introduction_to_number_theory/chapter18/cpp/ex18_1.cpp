@@ -39,8 +39,9 @@ ll extgcd(ll a, ll b, ll &u, ll &v) {
   if (b != 0) {
     d = extgcd(b, a % b, v, u);
     v -= (a / b) * u;
-  } else
+  } else {
     u = 1, v = 0;
+  }
   return d;
 }
 
@@ -71,15 +72,21 @@ ll solve(ll k, ll b, ll m) {
   return mod_pow(b, u, m);
 }
 
-void show(ll k, ll b, ll m) {
-  ll res = solve(k, b, m);
-  ll check = mod_pow(res, k, m);
-  printf("x^%lld=%lld(mod %lld) -> x=%lld, check=%lld\n", k, b, m, res, check);
+vector<ll> solve_bs(ll k, ll m, const vector<ll> &bs) {
+  vector<ll> res;
+  for (auto b : bs) {
+    res.push_back(solve(k, b, m));
+  }
+  return res;
+}
+
+void show(ll k, ll m, const vector<ll> &bs) {
+  vector<ll> res = solve_bs(k, m, bs);
+  for (ll i = 0; i < res.size(); ++i) {
+    printf("%lld%c", res[i], i == res.size() - 1 ? '\n' : ' ');
+  }
 }
 
 int main() {
-  show(131, 758, 1073);
-  show(329, 452, 1147);
-  show(113, 347, 463);
-  show(275, 139, 588);
+  show(1789, 7081, {5129, 2604, 4222});
 }
