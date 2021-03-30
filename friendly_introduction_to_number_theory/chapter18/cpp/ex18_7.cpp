@@ -7,8 +7,7 @@ vector<ll> pollard_rho(ll n) {
   ll iter = 1000;
   auto now = hrc::now().time_since_epoch().count();
   default_random_engine generator(now);
-  uniform_int_distribution<ll> distribution(
-      0, n - 1); // 0 and 1 instead of 2 is not working
+  uniform_int_distribution<ll> distribution(0, n - 1);
   ll x = distribution(generator);
   ll y = x;
   ll k = 2;
