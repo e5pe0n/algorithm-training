@@ -1,3 +1,4 @@
+#include <cassert>
 #include <functional>
 #include <set>
 #include <string>
@@ -39,8 +40,9 @@ bool is_unique4(string s) {
 bool is_unique5(string s) {
   ll b;
   for (auto c : s) {
-    if (b & (1 << c)) return false;
-    b |= 1 << c;
+    assert('a' <= c && c <= 'z');
+    if (b & (1 << (c - 'a'))) return false;
+    b |= 1 << (c - 'a');
   }
   return true;
 }
