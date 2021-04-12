@@ -279,7 +279,7 @@ LinkedList partition3(const LinkedList &lst, const ll &x) {
 LinkedList partition4(const LinkedList &lst, const ll &x) {
   // unstable
   LinkedList clone = copy(lst);
-  Node *cur = lst.head;
+  Node *cur = clone.head;
   Node *sep = new Node;
   sep->data = -1;
   sep->next = cur;
