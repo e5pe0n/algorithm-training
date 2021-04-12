@@ -110,3 +110,49 @@ class LinkedList:
             cnt += 1
             cur = cur.nxt
         raise IndexError("index out of range")
+
+    def get_ptr(self, key):
+        cur = self.head
+        while cur is not None:
+            if cur.data == key:
+                return cur
+            cur = cur.nxt
+        return cur
+
+
+def del_md_node1(md: Node):
+    if md is None or md.nxt is None:
+        return False
+    md.data = md.nxt.data
+    md.nxt = md.nxt.nxt
+    return True
+
+
+def make_list(s):
+    lst = LinkedList()
+    for c in s:
+        lst.append(ord(c))
+    return lst
+
+
+def run(f, fn, ps):
+    print(f"# {fn}")
+    for k, s in ps:
+        k = ord(k)
+        lst = make_list(s)
+        before = repr(lst)
+        f(lst.get_ptr(k))
+        after = repr(lst)
+        print(f"{k}: {before} -> {after}")
+    print()
+
+
+def ns(f):
+    return next(f).strip()
+
+
+with open("../testcases/2_03.txt") as f:
+    n = int(ns(f))
+    ps = [ns(f).split() for _ in range(n)]
+
+run(del_md_node1, "del_md_node1", ps)
