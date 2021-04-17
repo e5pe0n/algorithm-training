@@ -77,7 +77,7 @@ struct ThreeInOne {
 
   bool are_all_full() {
     return (_pt(s1) - s1->btm) + (_pt(s2) - s2->btm) + (_pt(s3) - s3->btm)
-           >= v.size();
+           >= size;
   }
 
   void _shift(Stack *s) {
