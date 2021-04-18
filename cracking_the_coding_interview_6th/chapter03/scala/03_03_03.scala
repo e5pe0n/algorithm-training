@@ -8,7 +8,7 @@ class Node(val value: Int) {
   var below: Option[Node] = None
 }
 
-class Stack(private val capacity: Int) {
+class Stack2(private val capacity: Int) {
   var top: Option[Node] = None
   var btm: Option[Node] = None
   var size: Int = 0
@@ -53,7 +53,7 @@ class Stack(private val capacity: Int) {
       case Some(node) => {
         btm = node.above
         btm match {
-          case Some(n) => n.below = Option(None)
+          case Some(n) => n.below = None
           case None    =>
         }
         size -= 1
@@ -64,16 +64,16 @@ class Stack(private val capacity: Int) {
 }
 
 class SetOfStack(val capacity: Int) {
-  val stacks: ArrayBuffer[Stack] = Nil
+  val stacks: ArrayBuffer[Stack2] = new ArrayBuffer
 
-  def lastStack: Option[Stack] =
-    if (stacks.isEmpty) None else stacks(stacks.length - 1)
+  def lastStack: Option[Stack2] =
+    if (stacks.isEmpty) None else Option(stacks(stacks.length - 1))
 
   def push(x: Int): Unit =
     if (!lastStack.isEmpty && !lastStack.get.isFull) {
       lastStack.get.push(x)
     } else {
-      val stack = new Stack(capacity)
+      val stack = new Stack2(capacity)
       stack.push(x)
       stacks += stack
     }
