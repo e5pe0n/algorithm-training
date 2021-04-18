@@ -4,7 +4,7 @@ import java.util.Stack
 
 class MultiStack(private val numOfStack: Int, private val defaultSize: Int) {
   class StackInfo(private val holder: MultiStack, var start: Int, var capacity: Int) {
-    var size: Int
+    var size: Int = 0
 
     def isWithinStackCapacity(idx: Int): Boolean = {
       if (idx < 0 || idx >= holder.vals.length) return false
@@ -21,7 +21,7 @@ class MultiStack(private val numOfStack: Int, private val defaultSize: Int) {
   }
 
   private val info: Array[StackInfo] = (for (i <- 0 until numOfStack)
-    yield new StackInfo(this, defaultSize * i, defaultSize)).to[Array]
+    yield new StackInfo(this, defaultSize * i, defaultSize)).toArray
   private val vals: Array[Int] = new Array(numOfStack * defaultSize)
 
   def push(stackNum: Int, x: Int): Unit = {
@@ -36,7 +36,7 @@ class MultiStack(private val numOfStack: Int, private val defaultSize: Int) {
 
   def pop(stackNum: Int): Int = {
     val stack = info(stackNum)
-    if (stack.isEmpty) throw EmptyStackException
+    if (stack.isEmpty) throw new EmptyStackException
 
     val x = vals(stack.lastElemIdx)
     vals(stack.lastElemIdx) = 0
@@ -48,7 +48,7 @@ class MultiStack(private val numOfStack: Int, private val defaultSize: Int) {
   def peek(stackNum: Int): Int = {
     val stack = info(stackNum)
 
-    vals[stack.lastElemIdx]
+    vals(stack.lastElemIdx)
   }
 
   def shift(stackNum: Int): Unit = {

@@ -14,7 +14,7 @@ class FixedMultiStack(val capacity: Int) {
   def pop(stackNum: Int): Int = {
     if (isEmpty(stackNum)) throw new EmptyStackException
     val topIdx = idxOfTop(stackNum)
-    val x = vals[topIdx]
+    val x = vals(topIdx)
     vals(topIdx) = 0
     sizes(stackNum) -= 1
     x
@@ -26,7 +26,6 @@ class FixedMultiStack(val capacity: Int) {
   }
 
   def isEmpty(stackNum: Int): Boolean = sizes(stackNum) == 0
-  def isFull(stackNum: Int): Boolean = sizes[stackNum] == capacity
   def isFull(stackNum: Int): Boolean = sizes(stackNum) == capacity
   def idxOfTop(stackNum: Int): Int = {
     val offset = stackNum * capacity
