@@ -1,13 +1,4 @@
-class A:
-    def __init__(self):
-        self.v = 0
-        self.__v = 1
-
-
-class B(A):
-    pass
-
-
-b = B()
-print(b.v)
-print(b.__v)
+x = 2**64
+print(x)
+year = x // 1000 // 3.154e+7
+print(year)
