@@ -1,4 +1,4 @@
-package scala
+package _scala
 
 import scala.collection.mutable.{ArrayBuffer, Queue}
 import scala.io.Source
