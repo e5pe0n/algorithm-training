@@ -4,7 +4,7 @@ import scala.io.Source
 import scala.collection.mutable.{ListBuffer}
 import scala.collection.mutable.ArrayBuffer
 
-object Main_04_09_v2 extends App {
+object Main_04_09_v02 extends App {
   case class Node(val x: Int, var left: Node = null, var right: Node = null) {
     override def toString(): String = s"($left $x $right)"
   }

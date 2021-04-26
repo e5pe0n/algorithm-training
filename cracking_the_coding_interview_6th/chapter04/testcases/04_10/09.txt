@@ -1,0 +1,47 @@
+22 10
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+10 5 l
+10 17 r
+5 3 l
+5 8 r
+17 15 l
+17 19 r
+3 1 l
+3 4 r
+8 6 l
+8 9 r
+15 12 l
+15 16 r
+19 18 l
+19 21 r
+1 0 l
+1 2 r
+6 7 r
+12 11 l
+12 13 r
+13 14 r
+21 20 l
+1 21
+21
+
+N a
+n1 n2 ... n_N
+u1 v1
+u2 v2
+...
+u_(N-1) v_(N-1)
+M b
+m1 m2 ... m_M
+p1 q1
+p2 q2
+...
+p_(M-1) q_(M-1)
+
+N: num of nodes of bigger BST (T1)
+a: root of T1
+n_i: node idx or node name of T1
+M: num of nodes of smaller BST (T2)
+b: root of T2
+m_i: node idx or node name of T2
+
+ans: false
