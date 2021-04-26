@@ -1,3 +1,4 @@
+// implementation is correct but algorithm is wrong
 #include <fstream>
 #include <memory>
 #include <string>
@@ -29,7 +30,7 @@ struct Tree {
 shared_ptr<Node>
 conn_nodes(vector<shared_ptr<Node>> &nodes, ll left, ll right) {
   if (right - left == 0) return nullptr;
-  if (right - left == 1) nodes[left];
+  if (right - left == 1) return nodes[left];
   ll mid = (left + right) / 2;
   nodes[mid]->left = conn_nodes(nodes, left, mid);
   nodes[mid]->right = conn_nodes(nodes, mid + 1, right);
@@ -62,8 +63,8 @@ vector<vector<shared_ptr<Node>>> make_nodes_list(shared_ptr<Tree> tree) {
 
 void perm(const vector<vector<shared_ptr<Node>>> &nodes_list,
           ll idx,
+          ll _idx,
           vector<shared_ptr<Node>> pre,
-          vector<bool> used,
           vector<vector<shared_ptr<Node>>> &res) {
   if (idx == nodes_list.size()) {
     for (ll i = 0; i < res.size(); ++i) {
@@ -74,27 +75,21 @@ void perm(const vector<vector<shared_ptr<Node>>> &nodes_list,
     puts("");
     return;
   }
-  if (pre.size() == nodes_list[idx].size()) {
-    vector<bool> _used(nodes_list[idx + 1].size());
+  if (_idx == nodes_list[idx].size()) {
     res[idx] = pre;
-    perm(nodes_list, idx + 1, vector<shared_ptr<Node>>{}, _used, res);
+    perm(nodes_list, idx + 1, 0, vector<shared_ptr<Node>>{}, res);
     return;
   }
-  for (auto &node : nodes_list[idx]) {
-    if (used[node->x]) continue;
-    for (ll i = 0; i <= pre.size(); ++i) {
-      used[node->x] = true;
-      vector<shared_ptr<Node>> _pre(pre.begin(), pre.end());
-      _pre.insert(_pre.begin() + i, node);
-      perm(nodes_list, idx, _pre, used, res);
-    }
+  for (ll i = 0; i <= pre.size(); ++i) {
+    vector<shared_ptr<Node>> _pre(pre.begin(), pre.end());
+    _pre.insert(_pre.begin() + i, nodes_list[idx][_idx]);
+    perm(nodes_list, idx, _idx + 1, _pre, res);
   }
 }
 
 void print_lists(vector<vector<shared_ptr<Node>>> &nodes_list) {
-  vector<bool> used(nodes_list[0].size());
   vector<vector<shared_ptr<Node>>> res(nodes_list.size());
-  perm(nodes_list, 0, vector<shared_ptr<Node>>{}, used, res);
+  perm(nodes_list, 0, 0, vector<shared_ptr<Node>>{}, res);
 }
 
 void solve(const string &fp) {
@@ -104,20 +99,12 @@ void solve(const string &fp) {
   ifs >> n;
   shared_ptr<Tree> tree = make_bst(n);
   vector<vector<shared_ptr<Node>>> nodes_list = make_nodes_list(tree);
-  for (ll i = 0; i < nodes_list.size(); ++i) {
-    printf("%lld: ", i);
-    for (ll j = 0; j < nodes_list[i].size(); ++j) {
-      printf("%lld ", nodes_list[i][j]->x);
-    }
-    puts("");
-  }
-  puts("");
   print_lists(nodes_list);
   puts("");
 }
 
 int main() {
-  // solve("../testcases/04_09/01.txt");
+  solve("../testcases/04_09/01.txt");
   solve("../testcases/04_09/02.txt");
-  // solve("../testcases/04_09/03.txt");
+  solve("../testcases/04_09/03.txt");
 }

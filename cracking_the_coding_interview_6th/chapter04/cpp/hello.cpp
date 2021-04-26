@@ -1,11 +1,14 @@
+#include <list>
 #include <string>
 #include <vector>
 using namespace std;
 using ll = long long;
 
 int main() {
-  vector<ll> v(2);
-  v.insert(v.begin() + 1, 100);
-  for (auto _v : v)
-    printf("%lld\n", _v);
+  vector<list<ll>> v;
+  v.push_back(list<ll>{});
+  printf("%ld\n", v.size());
+  for (auto lst : v) {
+    printf("%ld\n", lst.size());
+  }
 }
