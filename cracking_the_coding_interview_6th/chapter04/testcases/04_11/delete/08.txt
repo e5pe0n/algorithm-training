@@ -1,0 +1,18 @@
+5 1 3
+7 3 1 0 2
+1 2 l
+2 3 l
+3 4 l
+3 5 r
+
+N s x
+v1 v2 ... v_N
+u1 v1 c1
+u2 v2 c2
+...
+u_(N-1) v_(N-1) c_(N-1)
+
+N: num of nodes
+s: root of tree
+x: node value to delete
+vi: i-th node value
