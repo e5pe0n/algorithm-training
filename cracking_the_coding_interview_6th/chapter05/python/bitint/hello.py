@@ -1,3 +1,4 @@
 from bitint import Int32
 
-print(f"{-100:032b}")
+n = Int32(5)
+print(n)

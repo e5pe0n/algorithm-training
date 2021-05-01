@@ -93,7 +93,7 @@ class Int:
         return Int(f"{res:0{ope1.bit}b}", ope1.bit)
 
     def __repr__(self) -> str:
-        return f"Int({self.__value}, {self.__bin})"
+        return f"Int(bit={self.__bit}, value={self.__value}, bin={self.__bin})"
 
     def __str__(self) -> str:
         return str(self.value)
@@ -251,25 +251,35 @@ class Int:
     def __irshift__(self, other: Union[int, Int]) -> Int:
         return self >> other
 
-    def __lt__(self, other: Union[int, Int]) -> bool:
-        ope1, ope2 = self.__validate_opes(other)
-        return ope1.__value < ope2.value
+    def __lt__(self, other) -> bool:
+        if isinstance(other, Int):
+            return self.value < other.value
+        else:
+            return self.value < other
 
-    def __le__(self, other: Union[int, Int]) -> bool:
-        ope1, ope2 = self.__validate_opes(other)
-        return ope1.__value <= ope2.value
+    def __le__(self, other) -> bool:
+        if isinstance(other, Int):
+            return self.value <= other.value
+        else:
+            return self.value <= other
 
-    def __gt__(self, other: Union[int, Int]) -> bool:
-        ope1, ope2 = self.__validate_opes(other)
-        return ope1.__value > ope2.value
+    def __gt__(self, other) -> bool:
+        if isinstance(other, Int):
+            return self.value > other.value
+        else:
+            return self.value > other
 
-    def __ge__(self, other: Union[int, Int]) -> bool:
-        ope1, ope2 = self.__validate_opes(other)
-        return ope1.__value >= ope2.value
+    def __ge__(self, other) -> bool:
+        if isinstance(other, Int):
+            return self.value >= other.value
+        else:
+            return self.value >= other
 
     def __eq__(self, other: Union[int, Int]) -> bool:
-        ope1, ope2 = self.__validate_opes(other)
-        return ope1.__value == ope2.value
+        if isinstance(other, Int):
+            return self.value == other.value
+        else:
+            return self.value == other
 
     def __ne__(self, other: Union[int, Int]) -> bool:
         return not (self == other)
