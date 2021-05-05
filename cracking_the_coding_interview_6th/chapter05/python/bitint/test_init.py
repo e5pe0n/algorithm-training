@@ -79,6 +79,12 @@ def test_init_str_minus_1():
     assert 4294967295 == n.bin
 
 
+def test_init_str_surplus_length():
+    n = Int32("1111111111111111111100000000000000000000")
+    assert -1048576 == n.value
+    assert 4293918720 == n.bin
+
+
 def test_init_invalid_type():
     with pytest.raises(TypeError):
         Int32([0, 1, 2, 3, 4, 5])
@@ -92,11 +98,6 @@ def test_init_invalid_value_int_plus():
 def test_init_invalid_value_int_minus():
     with pytest.raises(ValueError):
         Int32(INT32_MIN - 1)
-
-
-def test_init_invalid_value_str_too_long():
-    with pytest.raises(ValueError):
-        Int32('1' * 33)
 
 
 def test_init_invalid_value_str_invalid_char():

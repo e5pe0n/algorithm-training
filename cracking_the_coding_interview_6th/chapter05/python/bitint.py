@@ -35,11 +35,10 @@ class Int:
                 self.__bin: int = self.__cmpl(abs(self.__value))
 
         elif isinstance(value, str):
-            if len(value) > self.__bit:
-                raise ValueError(f"length of value must be between [1, {self.__bit}].")
-
             if not pat.match(value):
                 raise ValueError("value must be a sequence of 0 and 1.")
+
+            value = value[-self.__bit:]
 
             if len(value) == self.__bit and value[0] == '1':
                 # MSB is 1 so we must calculate the complement
