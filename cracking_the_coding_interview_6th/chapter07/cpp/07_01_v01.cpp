@@ -1,3 +1,5 @@
+// this version needs dynamic_cast in functions to deal with BJCard.
+// I want to refactor that by template, such as Deck<BJCard>.
 #include <algorithm>
 #include <chrono>
 #include <functional>
