@@ -6,6 +6,7 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <type_traits>
 #include <vector>
 using namespace std;
 using ll = long long;
@@ -15,7 +16,10 @@ namespace trump {
 enum class Suits;
 class _Card;
 
-using Card = shared_ptr<_Card>;
+template <class T>
+static_assert(is_base_of_v<_Card, T>, "T must be derived from _Card");
+using Card = shared_ptr<T>;
+
 using Cards = list<Card>;
 using DeckInitializer = function<Cards()>;
 
@@ -85,13 +89,7 @@ public:
   }
 };
 
-class Joker : public _Card {
-  string to_str() override {
-    return repr({"Joker"});
-  }
-};
-
-Cards default_deck_initializer_without_jokers() {
+Cards BJ_deck_initializer() {
   Cards cards;
   for (auto s : suits_set) {
     for (ll i = 1; i <= 13; ++i) {
@@ -101,14 +99,7 @@ Cards default_deck_initializer_without_jokers() {
   return cards;
 }
 
-Cards defualt_deck_initializer() {
-  Cards cards = default_deck_initializer_without_jokers();
-  cards.push_back(make_shared<Joker>());
-  cards.push_back(make_shared<Joker>());
-  return cards;
-}
-
-class Deck {
+template <class T> class Deck {
   Cards _cards;
 
 public:
