@@ -16,11 +16,10 @@ namespace trump {
 enum class Suits;
 class _Card;
 
-template <class T>
-static_assert(is_base_of_v<_Card, T>, "T must be derived from _Card");
-using Card = shared_ptr<T>;
+using Card = shared_ptr<_Card>;
 
 using Cards = list<Card>;
+
 using DeckInitializer = function<Cards()>;
 
 enum class Suits { diamond, club, spade, heart };
@@ -89,17 +88,37 @@ public:
   }
 };
 
+class BJCard : public OrdinalCard {
+  ll _value;
+
+public:
+  BJCard(Suits suit, ll rank) : OrdinalCard{suit, rank} {
+    if (rank >= 11)
+      _value = 10;
+    else
+      _value = rank;
+  }
+
+  ll value() {
+    return _value;
+  }
+
+  string to_str() override {
+    return repr({suit_str(suit()), to_string(rank()), to_string(_value)});
+  }
+};
+
 Cards BJ_deck_initializer() {
   Cards cards;
   for (auto s : suits_set) {
     for (ll i = 1; i <= 13; ++i) {
-      cards.push_back(make_shared<OrdinalCard>(s, i));
+      cards.push_back(make_shared<BJCard>(s, i));
     }
   }
   return cards;
 }
 
-template <class T> class Deck {
+class Deck {
   Cards _cards;
 
 public:
@@ -129,7 +148,7 @@ public:
 
 int main() {
   using namespace trump;
-  Deck BJ_deck{default_deck_initializer_without_jokers};
+  Deck BJ_deck{BJ_deck_initializer};
   BJ_deck.shuffle();
   Card c1 = BJ_deck.draw();
   cout << c1->to_str() << endl;
@@ -139,6 +158,6 @@ int main() {
   cout << c3->to_str() << endl;
 }
 
-// Card(diamond, 5)
-// Card(heart, 13)
-// Card(diamond, 12)
+// Card(diamond, 5, 5)
+// Card(heart, 13, 10)
+// Card(diamond, 12, 10)
