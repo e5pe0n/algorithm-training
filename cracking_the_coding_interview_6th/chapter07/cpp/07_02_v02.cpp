@@ -1,6 +1,5 @@
 // Cracking the Coding Interview p.308
 #include <list>
-#include <memory>
 #include <string>
 #include <vector>
 using namespace std;
@@ -9,29 +8,27 @@ using ll = long long;
 enum class Rank { responder = 0, manager, director };
 
 class Employee;
-class Call;
+class Call {};
 class CallHandler;
-
-using EmployeePtr = shared_ptr<Employee>;
-using CallPtr = shared_ptr<Call>;
-using CallerPtr = shared_ptr<Caller>;
 
 class Caller {};
 
 class Employee {
-  CallPtr _current_call = nullptr;
+  Call _current_call;
+  bool _is_free;
 
 protected:
   Rank _rank;
 
 public:
+  Employee() {}
   Employee(CallHandler handler);
   void recieve_call(Call call);
   void call_completed();
   void escalate_and_reassign();
   bool assign_new_call();
   bool is_free() {
-    return _current_call != nullptr;
+    return _is_free;
   }
   Rank rank() {
     return _rank;
@@ -61,13 +58,13 @@ public:
 
 class Call {
   Rank _rank;
-  CallerPtr _caller;
-  EmployeePtr _handler;
+  Caller _caller;
+  Employee _handler;
 
 public:
-  Call(CallerPtr c) : _rank(Rank::responder), _caller(c) {}
+  Call(Caller c) : _rank(Rank::responder), _caller(c) {}
 
-  void set_handler(EmployeePtr e) {
+  void set_handler(Employee e) {
     _handler = e;
   }
 
@@ -89,24 +86,29 @@ class CallHandler {
   const ll NUM_MANAGERS = 4;
   const ll NUM_DIRECTORS = 3;
 
-  vector<vector<EmployeePtr>> employee_levels;
+  vector<vector<Employee>> employee_levels;
   vector<list<Call>> call_queues;
+
+  struct HandlerRes {
+    bool valid = false;
+    Employee emp;
+  };
 
 public:
   CallHandler(){};
 
-  EmployeePtr get_handler_for_call(Call call);
+  HandlerRes get_handler_for_call(Call call);
 
   void dispatch_call(Caller caller) {
-    Call call{make_shared<Caller>(caller)};
+    Call call{caller};
     dispatch_call(call);
   }
 
   void dispatch_call(Call call) {
-    EmployeePtr emp = get_handler_for_call(call);
-    if (emp) {
-      emp->recieve_call(call);
-      call.set_handler(emp);
+    HandlerRes res = get_handler_for_call(call);
+    if (res.valid) {
+      res.emp.recieve_call(call);
+      call.set_handler(res.emp);
     } else {
       call.reply("Please wait for free employee to reply");
       call_queues[static_cast<ll>(call.rank())].push_back(call);
