@@ -1,14 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
-
-struct A {
-  int a = 0;
-  int a() {
-    return 5;
-  }
-};
+using ll = long long;
 
 int main() {
-  A a;
-  a.a;
+  cout << (-1 % 5) << endl;
 }
