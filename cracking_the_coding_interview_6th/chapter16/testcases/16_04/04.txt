@@ -1,0 +1,6 @@
+o x
+oxo
+xoo
+xox
+
+ans: draw

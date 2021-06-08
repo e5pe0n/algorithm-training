@@ -1,0 +1,6 @@
+o x
+x.o
+oxo
+xox
+
+ans: x wins
