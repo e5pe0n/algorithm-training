@@ -1,21 +1,16 @@
 import random
 
+N = 10
 S = set()
-while len(S) < 30:
-    S.add(int(random.uniform(1, 100)))
+while len(S) < N:
+    S.add(random.uniform(1900, 2000))
 
-S = list(S)
-random.shuffle(S)
-A = S[:20]
-B = S[20:]
+S = sorted(list(S))
+births = S[:5]
+deads = S[5:]
 
+random.shuffle(births)
+random.shuffle(deads)
 
-res = float('inf')
-for a in A:
-    for b in B:
-        if res > abs(a - b):
-            res = abs(a - b)
-            p = (a, b)
-print(' '.join(list(map(str, A))))
-print(' '.join(list(map(str, B))))
-print(res, p)
+for b, d in zip(births, deads):
+    print(b, d)
