@@ -1,0 +1,18 @@
+<elemZ>
+  <elemA attr1-1="outer" attr1-2="v1-2">
+    <elemA attr2-1="inner">Inner elem1</elemA>
+  </elemA>
+  <elemB>Elem2</elemB>
+  <elemC attr3-1="v3-1" attr3-2="v3-2" attr3-3="v3-3">
+    <elemD>
+      <elemE>Choose one!!</elemE>
+      <elemF selected="op1">
+        <elemG id="op1">Option 1</elemG>
+        <elemG id="op2">Option 2</elemG>
+        <elemG id="op3">Option 3</elemG>
+        <elemG id="op4">Option 4</elemG>
+      </elemF>
+    </elemD>
+    <elemH style="margin: 5px;">Click me!!</elemH>
+  </elemC>
+</elemZ>
