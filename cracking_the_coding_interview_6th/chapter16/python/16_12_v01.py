@@ -1,53 +1,82 @@
-from xml_parser import *
-from typing import List, Dict
+from __future__ import annotations
 
 
-END = "0"
+class Coord:
+    def __init__(self, x: float, y: float):
+        self.x: float = x
+        self.y: float = y
+
+    def __add__(self, other: Coord) -> Coord:
+        return Coord(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other: Coord) -> Coord:
+        return Coord(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, d: float) -> Coord:
+        return Coord(self.x * d, self.y * d)
+
+    def __truediv__(self, d: float) -> Coord:
+        return Coord(self.x / d, self.y / d)
 
 
-def _encode(elem: Elem, code_map: Dict[str, int]) -> List[str]:
-    if isinstance(elem, Body):
-        return [elem.text]
-    res = [code_map[elem.name]]
-    for attr in elem.attributes:
-        res.append(code_map[attr.name])
-        res.append(attr.value)
-    res.append(END)
-    for child in elem.children:
-        res += _encode(child, code_map)
-    res.append(END)
-    return res
+class Line:
+    # ax + by + c = 0
+    def __init__(self, a: float, b: float, c: float):
+        self.a: float = a
+        self.b: float = b
+        self.c: float = c
 
 
-def encode(elem: Element, code_map: Dict[str, int]) -> List[str]:
-    return _encode(elem, code_map)
+def half_line(topleft1: Coord, btmright1: Coord, topleft2: Coord, btmright2: Coord) -> Line:
+    center1 = (topleft1 + btmright1) / 2
+    center2 = (topleft2 + btmright2) / 2
+    dx = center1.x - center2.x
+    dy = center1.y - center2.y
+    if dx == 0:
+        return Line(1, 0, -center1.x)
+    # y = px + q
+    p = dy / dx
+    q = center1.y - p * center1.x
+    return Line(-p, 1, -q)
 
 
 def ns(f):
     return next(f).strip()
 
 
-def solve(xml_path: str, txt_path: str):
-    print(f"# {xml_path} / {txt_path}")
-    with open(xml_path) as f:
-        xml = f.read()
-    with open(txt_path) as f:
-        n = int(ns(f))
-        code_map = {k: v for k, v in (ns(f).split() for _ in range(n))}
-    elem = parser(xml)
-    print(' '.join(encode(elem, code_map)))
+def solve(fp: str):
+    print(f"# {fp}")
+    with open(fp) as f:
+        x0, y0, x1, y1 = map(int, ns(f).split())
+        topleft1, btmright1 = Coord(x0, y0), Coord(x1, y1)
+        x0, y0, x1, y1 = map(int, ns(f).split())
+        topleft2, btmright2 = Coord(x0, y0), Coord(x1, y1)
+    line = half_line(topleft1, btmright1, topleft2, btmright2)
+    print(f"{line.a}x + {line.b}y + {line.c} = 0")
     print()
 
 
-solve("../testcases/16_11/01.xml", "../testcases/16_11/01.txt")
-solve("../testcases/16_11/02.xml", "../testcases/16_11/02.txt")
-solve("../testcases/16_11/03.xml", "../testcases/16_11/03.txt")
+solve("../testcases/16_12/01.txt")
+solve("../testcases/16_12/02.txt")
+solve("../testcases/16_12/03.txt")
+solve("../testcases/16_12/04.txt")
+solve("../testcases/16_12/05.txt")
+solve("../testcases/16_12/06.txt")
 
-# # ../testcases/16_11/01.xml / ../testcases/16_11/01.txt
-# 1 4 McDowell 5 CA 0 2 3 Gayle 0 Some Message 0 0
+# # ../testcases/16_12/01.txt
+# -0.5x + 1y + -4.5 = 0
 
-# # ../testcases/16_11/02.xml / ../testcases/16_11/02.txt
-# 1 6 card 7 width: 18rem; 0 2 8 ... 6 card-img-top 9 ... 0 0 1 6 card-body 0 3 6 card-title 0 Card title 0 4 6 card-text 0 Some quick example text to build on the card title and make up the bulk of the card's content. 0 5 10 # 6 btn btn-primary 0 Go somewhere 0 0 0
+# # ../testcases/16_12/02.txt
+# -1.4x + 1y + 14.399999999999999 = 0
 
-# # ../testcases/16_11/03.xml / ../testcases/16_11/03.txt
-# 9 0 1 10 outer 11 v1-2 0 1 12 inner 0 Inner elem1 0 0 2 0 Elem2 0 3 13 v3-1 14 v3-2 15 v3-3 0 4 0 5 0 Choose one!! 0 6 16 op1 0 7 17 op1 0 Option 1 0 7 17 op2 0 Option 2 0 7 17 op3 0 Option 3 0 7 17 op4 0 Option 4 0 0 0 8 18 margin: 5px; 0 Click me!! 0 0 0
+# # ../testcases/16_12/03.txt
+# 1.75x + 1y + 11.25 = 0
+
+# # ../testcases/16_12/04.txt
+# 0.0x + 1y + -1.0 = 0
+
+# # ../testcases/16_12/05.txt
+# 1x + 0y + -1.0 = 0
+
+# # ../testcases/16_12/06.txt
+# 1x + 0y + -0.0 = 0
