@@ -1,6 +1,8 @@
--8 2 -6 0
--1 7 3 3
+5
+family 1
+person 2
+firstName 3
+lastName 4
+state 5
 
-ans: a=-0.5, b=1, c=-4.5
-y = 0.5x + 4.5
--0.5x + y - 4.5 = 0
+ans: 1 4 McDowell 5 CA 0 2 3 Gayle 0 Some Message 0 0

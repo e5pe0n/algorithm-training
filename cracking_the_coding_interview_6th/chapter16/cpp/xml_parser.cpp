@@ -124,15 +124,14 @@ Element parser(const string &s) {
 
 }; // namespace XMLParser
 
-// int main() {
-//   using namespace XMLParser;
-//   ifstream ifs("../testcases/16_11/03.xml");
-//   string s;
-//   for (string line; getline(ifs, line);) {
-//     s += line;
-//   }
-//   cout << s << '\n' << endl;
-//   Element e = parser(s);
-//   // parser2(s);
-//   cout << e.repr() << endl;
-// }
+int main() {
+  using namespace XMLParser;
+  ifstream ifs("../testcases/16_11/03.xml");
+  string s;
+  for (string line; getline(ifs, line);) {
+    s += line;
+  }
+  cout << s << '\n' << endl;
+  Element e = parser(s);
+  cout << e.repr() << endl;
+}

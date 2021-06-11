@@ -1,8 +1,0 @@
-5
-family 1
-person 2
-firstName 3
-lastName 4
-state 5
-
-ans: 1 4 McDowell 5 CA 0 2 3 Gayle 0 Some Message 0 0
