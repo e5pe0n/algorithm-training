@@ -1,0 +1,6 @@
+RGBY
+GGRR
+
+solution
+guess
+ans: hits=1, pseudo-hits=1

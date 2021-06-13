@@ -1,0 +1,6 @@
+RGGR
+GGRR
+
+solution
+guess
+ans: hits=2, pseudo-hits=2

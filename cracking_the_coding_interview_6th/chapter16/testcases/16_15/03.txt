@@ -1,0 +1,6 @@
+RGBY
+RGBY
+
+solution
+guess
+ans: hits=4, pseudo-hits=0
