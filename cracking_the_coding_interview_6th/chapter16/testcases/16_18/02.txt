@@ -1,0 +1,23 @@
+catcagocatgo
+6
+aabab
+a
+ab
+abb
+b
+aab
+
+value
+n: pattern nums
+pattern_0
+pattern_1
+...
+pattern_n
+
+ans:
+false
+true
+true
+false
+true
+false
