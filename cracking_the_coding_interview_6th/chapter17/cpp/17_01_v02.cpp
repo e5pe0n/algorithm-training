@@ -1,22 +1,13 @@
+// Crakinig the Coding Interview p.530
 #include <fstream>
 #include <string>
 using namespace std;
 
 int add(int a, int b) {
-  int res = 0;
-  int _c = 0;
-  int i = 1;
-  while (i != 0) {
-    int s1 = (a & i) ^ (b & i);
-    int c1 = (a & i) & (b & i);
-    int s2 = s1 ^ _c;
-    int c2 = s1 & _c;
-    _c = c1 | c2;
-    res |= s2;
-    i <<= 1;
-    _c <<= 1;
-  }
-  return res;
+  if (b == 0) return a;
+  int sum = a ^ b;
+  int carry = (a & b) << 1;
+  return add(sum, carry);
 }
 
 void solve(const string &fp) {
