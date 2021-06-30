@@ -1,0 +1,4 @@
+1abc2de34fg
+
+ans: 6
+c2de34

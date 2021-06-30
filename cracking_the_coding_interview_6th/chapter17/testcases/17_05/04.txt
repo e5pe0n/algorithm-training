@@ -1,0 +1,3 @@
+a0000a000a000aaaaaaa
+
+ans: 20
