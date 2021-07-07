@@ -1,0 +1,22 @@
+13
+6 2 3
+2 4 5
+10 6 7
+1 -1 -1
+4 8 9
+9 10 -1
+12 11 12
+3 -1 -1
+5 -1 -1
+7 -1 13
+11 -1 -1
+13 -1 -1
+8 -1 -1
+
+N
+v1 left_node right_node
+v2 left_node right_node
+...
+vN left_node right_node
+
+-1 indicates null
