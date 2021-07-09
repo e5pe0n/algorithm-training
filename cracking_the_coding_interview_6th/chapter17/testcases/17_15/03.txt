@@ -1,0 +1,4 @@
+7
+cat banana dog nana walk walker dogcatwalkerwalknanabanana
+
+ans: dogcatwalkerwalknanabanana
