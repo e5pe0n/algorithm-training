@@ -1,0 +1,19 @@
+machinelearninginvolvescomputersdiscoveringhowtheycanperformtaskswithoutbeingexplicitlyprogrammedtodosoitinvolvescomputerslearningfromdataprovidedsothattheycarryoutcertaintasksforsimpletasksassignedtocomputersitispossibletoprogramalgorithmstellingthemachinehowtoexecuteallstepsrequiredtosolvetheproblemathandonthecomputerspartnolearningisneededformoreadvancedtasksitcanbechallengingforahumantomanuallycreatetheneededalgorithmsinpracticeitcanturnouttobemoreeffectivetohelpthemachinedevelopitsownalgorithmratherthanhavinghumanprogrammersspecifyeveryneededstep7thedisciplineofmachinelearningemploysvariousapproachestoteachcomputerstoaccomplishtaskswherenofullysatisfactoryalgorithmisavailableincaseswherevastnumbersofpotentialanswersexistoneapproachistolabelsomeofthecorrectanswersasvalidthiscanthenbeusedastrainingdataforthecomputertoimprovethealgorithmsitusestodeterminecorrectanswersforexampletotrainasystemforthetaskofdigitalcharacterrecognitionthemnistdatasetofhandwrittendigitshasoftenbeenused7
+7
+is
+of
+the
+that
+machine
+computer
+handwritten
+
+ans:
+is : 33, 211, 336, 562, 637, 660, 678, 732, 746, 787, 951
+of : 571, 651, 712, 759, 917, 961, 983
+the : 46, 152, 247, 292, 310, 407, 471, 505, 558, 761, 792, 819, 839, 910, 946
+that : 148
+machine : 0, 250, 474, 573
+computer : 23, 113, 200, 313, 619, 822
+handwritten : 963
+mmm:
