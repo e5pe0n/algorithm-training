@@ -1,0 +1,13 @@
+10
+.....x....
+.xxxxx....
+.x...x.xxx
+.x...x.xxx
+.x...x.xxx
+.xxxxx...x
+..........
+.xxx..xxx.
+.xxx..xxx.
+xxxx..xxx.
+
+ans: (7, 6), (9, 8)
