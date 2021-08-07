@@ -1,0 +1,5 @@
+N = int(input())
+A = sorted(list(map(int, input().split())))
+B = sorted(list(map(int, input().split())))
+res = sum(map(lambda x: abs(x[0] - x[1]), zip(A, B)))
+print(res)
