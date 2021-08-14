@@ -26,7 +26,7 @@ int main() {
   }
   ll t = INF;
   vector<ll> res(N, INF);
-  for (ll i = 0; i < N + 1; ++i) {
+  for (ll i = 0; i < N; ++i) {
     ll j = (i + min_i) % N;
     t = min(t, T[j]);
     res[j] = min(res[j], t);

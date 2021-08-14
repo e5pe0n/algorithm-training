@@ -13,7 +13,7 @@ for i, t in enumerate(T):
 
 t = INF
 res = [INF] * N
-for i in range(N + 1):
+for i in range(N):
     j = (i + fastest_i) % N
     t = min(t, T[j])
     res[j] = min(res[j], t)
